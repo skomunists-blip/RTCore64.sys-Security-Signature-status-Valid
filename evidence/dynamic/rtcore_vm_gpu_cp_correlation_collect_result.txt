@@ -1,0 +1,20 @@
+﻿TestType=GPU CP correlation collection (safe)
+User=HOME-PC\qq
+Elevated=True
+Mode=Read-only event correlation around controlled BAR test artifact
+WindowMinutes=10
+CollectedAt=2026-05-24T14:41:03.9776622+03:00
+---
+AnchorMode=File
+AnchorFile=C:\Users\qq\Desktop\rtcore_vm_controlled_diff_write_matrix_result.txt
+AnchorLastWrite=2026-05-24T14:41:02.6721007+03:00
+WindowStart=2026-05-24T14:31:02.6721007+03:00
+WindowEnd=2026-05-24T14:51:02.6721007+03:00
+---
+SystemEventCount=0
+DxgKrnlAdminEventCount=0
+DxgKrnlOperationalEventCount=0
+Summary.TdrLikeSystemEvents=0
+Summary.DxgAdminEvents=0
+Summary.DxgOperationalEvents=0
+Conclusion=Correlation collection complete. Use timestamps to align with controlled BAR write run.

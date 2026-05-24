@@ -1,0 +1,53 @@
+﻿Static callsite extract (auto)
+Date: 2026-05-24
+
+--- From rtcore_comprehensive_audit.txt ---
+293:000114c5 CMP EAX,0x80002014 IN=FUN_00011438 @ 00011438
+294:000114d0 CMP EAX,0x80002018 IN=FUN_00011438 @ 00011438
+295:000114db CMP EAX,0x8000201c IN=FUN_00011438 @ 00011438
+560:        cVar6 = in((short)*plVar4);
+572:        uVar7 = in((short)*plVar4);
+584:        uVar9 = in((short)*plVar4);
+594:    if (uVar1 == 0x80002014) {
+596:        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+601:          out((short)*plVar4,*(undefined1 *)((longlong)plVar4 + 4));
+611:    if (uVar1 == 0x80002018) {
+613:        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+618:          out((short)*plVar4,*(undefined2 *)((longlong)plVar4 + 4));
+628:    if (uVar1 == 0x8000201c) {
+630:        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+635:          out((short)*plVar4,*(undefined4 *)((longlong)plVar4 + 4));
+1121:        cVar6 = in((short)*plVar4);
+1133:        uVar7 = in((short)*plVar4);
+1145:        uVar9 = in((short)*plVar4);
+1155:    if (uVar1 == 0x80002014) {
+1157:        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+1162:          out((short)*plVar4,*(undefined1 *)((longlong)plVar4 + 4));
+1172:    if (uVar1 == 0x80002018) {
+1174:        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+1179:          out((short)*plVar4,*(undefined2 *)((longlong)plVar4 + 4));
+1189:    if (uVar1 == 0x8000201c) {
+1191:        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+1196:          out((short)*plVar4,*(undefined4 *)((longlong)plVar4 + 4));
+
+--- From rtcore_deep_issue_hunt.txt ---
+11:0x80002014 DeviceType=0x8000 Function=0x805 Method=0 Access=0
+12:0x80002018 DeviceType=0x8000 Function=0x806 Method=0 Access=0
+491:0001151c  CMP dword ptr [RBX],0xcfc  ; FUN_00011438 @ 00011438
+492:00011524  MOV EDX,0xcf8  ; FUN_00011438 @ 00011438
+493:00011571  CMP dword ptr [RBX],0xcfc  ; FUN_00011438 @ 00011438
+494:00011579  MOV EDX,0xcf8  ; FUN_00011438 @ 00011438
+495:000115c8  CMP dword ptr [RBX],0xcfc  ; FUN_00011438 @ 00011438
+496:000115d0  MOV EDX,0xcf8  ; FUN_00011438 @ 00011438
+743:        cVar6 = in((short)*plVar4);
+755:        uVar7 = in((short)*plVar4);
+767:        uVar9 = in((short)*plVar4);
+777:    if (uVar1 == 0x80002014) {
+779:        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+784:          out((short)*plVar4,*(undefined1 *)((longlong)plVar4 + 4));
+794:    if (uVar1 == 0x80002018) {
+796:        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+801:          out((short)*plVar4,*(undefined2 *)((longlong)plVar4 + 4));
+811:    if (uVar1 == 0x8000201c) {
+813:        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+818:          out((short)*plVar4,*(undefined4 *)((longlong)plVar4 + 4));

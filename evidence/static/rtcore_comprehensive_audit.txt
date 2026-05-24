@@ -1,0 +1,3353 @@
+===== PROGRAM SUMMARY =====
+Name=RTCore64.sys
+Language=x86:LE:64:default
+CompilerSpec=windows
+ImageBase=00010000
+MinAddress=00010000
+MaxAddress=ff0000184f
+FunctionCount=52
+
+===== IMPORTS / EXTERNAL SYMBOLS =====
+NTOSKRNL.EXE::MmUnmapIoSpace @ EXTERNAL:00000001
+NTOSKRNL.EXE::ZwUnmapViewOfSection @ EXTERNAL:00000002
+NTOSKRNL.EXE::MmMapIoSpace @ EXTERNAL:00000003
+NTOSKRNL.EXE::ZwClose @ EXTERNAL:00000004
+NTOSKRNL.EXE::IoDeleteDevice @ EXTERNAL:00000005
+NTOSKRNL.EXE::ObReferenceObjectByHandle @ EXTERNAL:00000006
+NTOSKRNL.EXE::IoCreateSymbolicLink @ EXTERNAL:00000007
+NTOSKRNL.EXE::ZwOpenSection @ EXTERNAL:00000008
+NTOSKRNL.EXE::KeBugCheckEx @ EXTERNAL:00000009
+NTOSKRNL.EXE::RtlInitUnicodeString @ EXTERNAL:0000000a
+NTOSKRNL.EXE::ZwMapViewOfSection @ EXTERNAL:0000000b
+NTOSKRNL.EXE::IofCompleteRequest @ EXTERNAL:0000000c
+NTOSKRNL.EXE::IoDeleteSymbolicLink @ EXTERNAL:0000000d
+NTOSKRNL.EXE::MmGetSystemRoutineAddress @ EXTERNAL:0000000e
+NTOSKRNL.EXE::IoCreateDevice @ EXTERNAL:0000000f
+NTOSKRNL.EXE::ObOpenObjectByPointer @ EXTERNAL:00000010
+NTOSKRNL.EXE::ZwSetSecurityObject @ EXTERNAL:00000011
+NTOSKRNL.EXE::IoDeviceObjectType @ EXTERNAL:00000012
+NTOSKRNL.EXE::_snwprintf @ EXTERNAL:00000013
+NTOSKRNL.EXE::RtlLengthSecurityDescriptor @ EXTERNAL:00000014
+NTOSKRNL.EXE::SeCaptureSecurityDescriptor @ EXTERNAL:00000015
+NTOSKRNL.EXE::ExFreePoolWithTag @ EXTERNAL:00000016
+NTOSKRNL.EXE::RtlCreateSecurityDescriptor @ EXTERNAL:00000017
+NTOSKRNL.EXE::RtlSetDaclSecurityDescriptor @ EXTERNAL:00000018
+NTOSKRNL.EXE::RtlAbsoluteToSelfRelativeSD @ EXTERNAL:00000019
+NTOSKRNL.EXE::IoIsWdmVersionAvailable @ EXTERNAL:0000001a
+NTOSKRNL.EXE::SeExports @ EXTERNAL:0000001b
+NTOSKRNL.EXE::wcschr @ EXTERNAL:0000001c
+NTOSKRNL.EXE::_wcsnicmp @ EXTERNAL:0000001d
+NTOSKRNL.EXE::ExAllocatePoolWithTag @ EXTERNAL:0000001e
+NTOSKRNL.EXE::RtlLengthSid @ EXTERNAL:0000001f
+NTOSKRNL.EXE::RtlAddAccessAllowedAce @ EXTERNAL:00000020
+NTOSKRNL.EXE::RtlGetSaclSecurityDescriptor @ EXTERNAL:00000021
+NTOSKRNL.EXE::RtlGetDaclSecurityDescriptor @ EXTERNAL:00000022
+NTOSKRNL.EXE::RtlGetGroupSecurityDescriptor @ EXTERNAL:00000023
+NTOSKRNL.EXE::RtlGetOwnerSecurityDescriptor @ EXTERNAL:00000024
+NTOSKRNL.EXE::ZwOpenKey @ EXTERNAL:00000025
+NTOSKRNL.EXE::ZwCreateKey @ EXTERNAL:00000026
+NTOSKRNL.EXE::ZwQueryValueKey @ EXTERNAL:00000027
+NTOSKRNL.EXE::ZwSetValueKey @ EXTERNAL:00000028
+NTOSKRNL.EXE::RtlFreeUnicodeString @ EXTERNAL:00000029
+NTOSKRNL.EXE::__C_specific_handler @ EXTERNAL:0000002a
+HAL.DLL::HalGetBusDataByOffset @ EXTERNAL:0000002b
+HAL.DLL::HalSetBusDataByOffset @ EXTERNAL:0000002c
+HAL.DLL::HalTranslateBusAddress @ EXTERNAL:0000002d
+
+===== DANGEROUS API REFERENCES =====
+API=NTOSKRNL.EXE::MmMapIoSpace Address=EXTERNAL:00000003
+  FROM=00013030 IN=<none> TYPE=DATA
+  FROM=000113db IN=FUN_00011384 @ 00011384 TYPE=COMPUTED_CALL
+API=PTR_MmMapIoSpace_00013030 Address=00013030
+  FROM=000113db IN=FUN_00011384 @ 00011384 TYPE=READ
+API=NTOSKRNL.EXE::MmUnmapIoSpace Address=EXTERNAL:00000001
+  FROM=00013020 IN=<none> TYPE=DATA
+  FROM=000119ac IN=FUN_00011438 @ 00011438 TYPE=COMPUTED_CALL
+API=PTR_MmUnmapIoSpace_00013020 Address=00013020
+  FROM=000119ac IN=FUN_00011438 @ 00011438 TYPE=READ
+API=MmMapLockedPages NOT_FOUND
+API=MmMapLockedPagesSpecifyCache NOT_FOUND
+API=MmCopyMemory NOT_FOUND
+API=MmCopyVirtualMemory NOT_FOUND
+API=MmProbeAndLockPages NOT_FOUND
+API=IoAllocateMdl NOT_FOUND
+API=NTOSKRNL.EXE::ZwMapViewOfSection Address=EXTERNAL:0000000b
+  FROM=00013070 IN=<none> TYPE=DATA
+  FROM=0001131f IN=FUN_00011150 @ 00011150 TYPE=COMPUTED_CALL
+API=PTR_ZwMapViewOfSection_00013070 Address=00013070
+  FROM=0001131f IN=FUN_00011150 @ 00011150 TYPE=READ
+API=NTOSKRNL.EXE::ZwUnmapViewOfSection Address=EXTERNAL:00000002
+  FROM=00013028 IN=<none> TYPE=DATA
+  FROM=000116a3 IN=FUN_00011438 @ 00011438 TYPE=COMPUTED_CALL
+API=PTR_ZwUnmapViewOfSection_00013028 Address=00013028
+  FROM=000116a3 IN=FUN_00011438 @ 00011438 TYPE=READ
+API=NTOSKRNL.EXE::ZwOpenSection Address=EXTERNAL:00000008
+  FROM=00013058 IN=<none> TYPE=DATA
+  FROM=00011220 IN=FUN_00011150 @ 00011150 TYPE=COMPUTED_CALL
+API=PTR_ZwOpenSection_00013058 Address=00013058
+  FROM=00011220 IN=FUN_00011150 @ 00011150 TYPE=READ
+API=NTOSKRNL.EXE::ObReferenceObjectByHandle Address=EXTERNAL:00000006
+  FROM=00013048 IN=<none> TYPE=DATA
+  FROM=00011251 IN=FUN_00011150 @ 00011150 TYPE=COMPUTED_CALL
+API=PTR_ObReferenceObjectByHandle_00013048 Address=00013048
+  FROM=00011251 IN=FUN_00011150 @ 00011150 TYPE=READ
+API=HAL.DLL::HalTranslateBusAddress Address=EXTERNAL:0000002d
+  FROM=00013010 IN=<none> TYPE=DATA
+  FROM=00011284 IN=FUN_00011150 @ 00011150 TYPE=COMPUTED_CALL
+  FROM=000112a7 IN=FUN_00011150 @ 00011150 TYPE=COMPUTED_CALL
+  FROM=000113c6 IN=FUN_00011384 @ 00011384 TYPE=COMPUTED_CALL
+API=PTR_HalTranslateBusAddress_00013010 Address=00013010
+  FROM=00011284 IN=FUN_00011150 @ 00011150 TYPE=READ
+  FROM=000112a7 IN=FUN_00011150 @ 00011150 TYPE=READ
+  FROM=000113c6 IN=FUN_00011384 @ 00011384 TYPE=READ
+API=HAL.DLL::HalGetBusDataByOffset Address=EXTERNAL:0000002b
+  FROM=00013000 IN=<none> TYPE=DATA
+  FROM=0001183f IN=FUN_00011438 @ 00011438 TYPE=COMPUTED_CALL
+  FROM=000110ba IN=FUN_00011044 @ 00011044 TYPE=COMPUTED_CALL
+  FROM=000110ea IN=FUN_00011044 @ 00011044 TYPE=COMPUTED_CALL
+API=PTR_HalGetBusDataByOffset_00013000 Address=00013000
+  FROM=000101c0 IN=<none> TYPE=DATA
+  FROM=00010214 IN=<none> TYPE=DATA
+  FROM=000110ba IN=FUN_00011044 @ 00011044 TYPE=READ
+  FROM=000110ea IN=FUN_00011044 @ 00011044 TYPE=READ
+  FROM=0001183f IN=FUN_00011438 @ 00011438 TYPE=READ
+API=HAL.DLL::HalSetBusDataByOffset Address=EXTERNAL:0000002c
+  FROM=00013008 IN=<none> TYPE=DATA
+  FROM=000117d5 IN=FUN_00011438 @ 00011438 TYPE=COMPUTED_CALL
+API=PTR_HalSetBusDataByOffset_00013008 Address=00013008
+  FROM=000117d5 IN=FUN_00011438 @ 00011438 TYPE=READ
+API=ZwCreateSection NOT_FOUND
+API=ZwOpenProcess NOT_FOUND
+API=ZwOpenThread NOT_FOUND
+API=PsLookupProcessByProcessId NOT_FOUND
+API=KeStackAttachProcess NOT_FOUND
+API=ProbeForRead NOT_FOUND
+API=ProbeForWrite NOT_FOUND
+API=ExGetPreviousMode NOT_FOUND
+API=WdmlibIoCreateDeviceSecure Address=00016074
+  FROM=0001509c IN=<none> TYPE=DATA
+  FROM=00011bac IN=FUN_00011b30 @ 00011b30 TYPE=UNCONDITIONAL_CALL
+API=NTOSKRNL.EXE::IoCreateDevice Address=EXTERNAL:0000000f
+  FROM=00013090 IN=<none> TYPE=DATA
+  FROM=00016302 IN=IoDevObjCreateDeviceSecure @ 000161b8 TYPE=COMPUTED_CALL
+API=PTR_IoCreateDevice_00013090 Address=00013090
+  FROM=00016302 IN=IoDevObjCreateDeviceSecure @ 000161b8 TYPE=READ
+API=u_IoCreateDeviceSecure_000131a0 Address=000131a0
+  FROM=0001600c IN=WdmlibInit @ 00016008 TYPE=DATA
+API=WdmlibIoCreateDeviceSecure Address=00016074
+  FROM=0001509c IN=<none> TYPE=DATA
+  FROM=00011bac IN=FUN_00011b30 @ 00011b30 TYPE=UNCONDITIONAL_CALL
+API=u_IoCreateDeviceSecure_000131a0 Address=000131a0
+  FROM=0001600c IN=WdmlibInit @ 00016008 TYPE=DATA
+API=WdmlibIoCreateDeviceSecure Address=00016074
+  FROM=0001509c IN=<none> TYPE=DATA
+  FROM=00011bac IN=FUN_00011b30 @ 00011b30 TYPE=UNCONDITIONAL_CALL
+
+===== INTERESTING UTF-16 STRING LOCATIONS =====
+\Device\PhysicalMemory => 000121d0
+\Device\RTCore64 => 00014310
+\DosDevices\RTCore64 => 000142e0
+D:P(A;;GA;;;SY)(A;;GA;;;BA) => 00012200
+
+===== DEFINED STRING DATA (BEST EFFORT) =====
+000121d0 \Device\PhysicalMemory
+00012200 D:P(A;;GA;;;SY)(A;;GA;;;BA)
+000132f0 \Registry\Machine\System\CurrentControlSet\Control\Class
+000142e0 \DosDevices\RTCore64
+00014310 \Device\RTCore64
+EmittedStringCount=5
+
+===== ALL FUNCTIONS =====
+00011008 FUN_00011008 Body=[[00011008, 0001103d]]
+00011044 FUN_00011044 Body=[[00011044, 00011146]]
+00011150 FUN_00011150 Body=[[00011150, 0001137d]]
+00011384 FUN_00011384 Body=[[00011384, 0001142f]]
+00011438 FUN_00011438 Body=[[00011438, 00011a86] [00011a95, 00011aeb] [00011afa, 00011b29]]
+00011b30 FUN_00011b30 Body=[[00011b30, 00011bf7]]
+00011c10 FUN_00011c10 Body=[[00011c10, 00011c2f]]
+00011c38 FUN_00011c38 Body=[[00011c38, 00011c5e]]
+00011c68 WdmlibRtlInitUnicodeStringEx Body=[[00011c68, 00011cc0]]
+00011cc8 _snwprintf Body=[[00011cc8, 00011ccd]]
+00011cd4 __GSHandlerCheckCommon Body=[[00011cd4, 00011d36]]
+00011d40 __GSHandlerCheck Body=[[00011d40, 00011d5c]]
+00011d64 wcschr Body=[[00011d64, 00011d69]]
+00011d70 _wcsnicmp Body=[[00011d70, 00011d75]]
+00011d90 FUN_00011d90 Body=[[00011d90, 00011dfd] [00011e07, 00011e39] [00011e40, 00011e79]]
+00011e90 memcpy Body=[[00011e90, 00011f0c] [00011f10, 00011f20] [00011f37, 00011f74] [00011f82, 00012023] [0001203a, 000120ac] [000120b0, 000120c0] [000120d7, 00012113] [00012122, 000121c3]]
+00016008 WdmlibInit Body=[[00016008, 0001606d]]
+00016074 WdmlibIoCreateDeviceSecure Body=[[00016074, 00016103]]
+0001610c IopDevObjApplyPostCreationSettings Body=[[0001610c, 000161ae]]
+000161b8 IoDevObjCreateDeviceSecure Body=[[000161b8, 00016366]]
+00016370 FUN_00016370 Body=[[00016370, 0001637a]]
+00016384 PpRegStateFreeStackCreationSettings Body=[[00016384, 0001639d]]
+000163a4 PiRegStateOpenClassKey Body=[[000163a4, 00016539]]
+00016540 PpRegStateInitEmptyCreationSettings Body=[[00016540, 00016551]]
+00016558 PiRegStateReadStackCreationSettingsFromKey Body=[[00016558, 0001671b]]
+00016724 PpRegStateReadCreateClassCreationSettings Body=[[00016724, 0001684a]]
+00016854 PpRegStateUpdateStackCreationSettings Body=[[00016854, 00016976]]
+00016980 SepSddlParseWideStringUlong Body=[[00016980, 00016a59]]
+00016a60 SepSddlAddAceToAcl Body=[[00016a60, 00016b3e]]
+00016b48 SepSddlLookupAccessMaskInTable Body=[[00016b48, 00016bd8]]
+00016be0 SepSddlGetSidForString Body=[[00016be0, 00016c9d]]
+00016ca4 SepSddlGetAclForString Body=[[00016ca4, 0001705c]]
+00017064 SepSddlDaclFromSDDLString Body=[[00017064, 00017123]]
+0001712c SepSddlSecurityDescriptorFromSDDLString Body=[[0001712c, 00017224]]
+0001722c SeSddlSecurityDescriptorFromSDDL Body=[[0001722c, 000172ed]]
+000172f4 SeSetSecurityAccessMask Body=[[000172f4, 00017319]]
+00017320 SeUtilSecurityInfoFromSecurityDescriptor Body=[[00017320, 000173e7]]
+000173f0 CmpRegUtilAllocateUnicodeString Body=[[000173f0, 00017434]]
+0001743c CmRegUtilUcValueSetUcString Body=[[0001743c, 00017535]]
+0001753c CmRegUtilUcValueGetDword Body=[[0001753c, 000175ac]]
+000175b4 CmRegUtilCreateUcKey Body=[[000175b4, 00017649]]
+00017650 CmRegUtilOpenExistingUcKey Body=[[00017650, 000176a5]]
+000176ac CmRegUtilWstrValueSetWstrString Body=[[000176ac, 000176fa]]
+00017704 CmRegUtilWstrValueSetUcString Body=[[00017704, 0001773c]]
+00017744 CmRegUtilWstrValueSetFullBuffer Body=[[00017744, 0001779a]]
+000177a4 CmRegUtilWstrValueGetDword Body=[[000177a4, 000177ec]]
+000177f4 CmRegUtilCreateWstrKey Body=[[000177f4, 00017863]]
+0001786c CmRegUtilOpenExistingWstrKey Body=[[0001786c, 000178b4]]
+000178bc CmRegUtilUcValueGetFullBuffer Body=[[000178bc, 000179ed]]
+000179f4 CmRegUtilWstrValueGetFullBuffer Body=[[000179f4, 00017a46]]
+00018008 FUN_00018008 Body=[[00018008, 0001805c]]
+00018064 entry Body=[[00018064, 00018081]]
+
+===== CALL REFERENCES BY FUNCTION =====
+00011008 FUN_00011008 CALLS [NTOSKRNL.EXE::RtlInitUnicodeString@EXTERNAL:0000000a, NTOSKRNL.EXE::IoDeleteSymbolicLink@EXTERNAL:0000000d, NTOSKRNL.EXE::IoDeleteDevice@EXTERNAL:00000005]
+00011044 FUN_00011044 CALLS [HAL.DLL::HalGetBusDataByOffset@EXTERNAL:0000002b]
+00011150 FUN_00011150 CALLS [FUN_00011044@00011044, NTOSKRNL.EXE::RtlInitUnicodeString@EXTERNAL:0000000a, NTOSKRNL.EXE::ZwOpenSection@EXTERNAL:00000008, NTOSKRNL.EXE::ObReferenceObjectByHandle@EXTERNAL:00000006, HAL.DLL::HalTranslateBusAddress@EXTERNAL:0000002d, NTOSKRNL.EXE::ZwMapViewOfSection@EXTERNAL:0000000b, NTOSKRNL.EXE::ZwClose@EXTERNAL:00000004]
+00011384 FUN_00011384 CALLS [FUN_00011044@00011044, HAL.DLL::HalTranslateBusAddress@EXTERNAL:0000002d, NTOSKRNL.EXE::MmMapIoSpace@EXTERNAL:00000003]
+00011438 FUN_00011438 CALLS [NTOSKRNL.EXE::ZwUnmapViewOfSection@EXTERNAL:00000002, FUN_00011150@00011150, HAL.DLL::HalSetBusDataByOffset@EXTERNAL:0000002c, HAL.DLL::HalGetBusDataByOffset@EXTERNAL:0000002b, NTOSKRNL.EXE::MmUnmapIoSpace@EXTERNAL:00000001, FUN_00011384@00011384, NTOSKRNL.EXE::IofCompleteRequest@EXTERNAL:0000000c]
+00011b30 FUN_00011b30 CALLS [NTOSKRNL.EXE::RtlInitUnicodeString@EXTERNAL:0000000a, WdmlibIoCreateDeviceSecure@00016074, NTOSKRNL.EXE::IoCreateSymbolicLink@EXTERNAL:00000007]
+00011c10 FUN_00011c10 CALLS [FUN_00011c38@00011c38]
+00011c38 FUN_00011c38 CALLS [NTOSKRNL.EXE::KeBugCheckEx@EXTERNAL:00000009]
+00011c68 WdmlibRtlInitUnicodeStringEx CALLS []
+00011cc8 _snwprintf CALLS []
+00011cd4 __GSHandlerCheckCommon CALLS [FUN_00011c10@00011c10]
+00011d40 __GSHandlerCheck CALLS [__GSHandlerCheckCommon@00011cd4]
+00011d64 wcschr CALLS []
+00011d70 _wcsnicmp CALLS []
+00011d90 FUN_00011d90 CALLS []
+00011e90 memcpy CALLS []
+00016008 WdmlibInit CALLS [NTOSKRNL.EXE::RtlInitUnicodeString@EXTERNAL:0000000a, NTOSKRNL.EXE::MmGetSystemRoutineAddress@EXTERNAL:0000000e]
+00016074 WdmlibIoCreateDeviceSecure CALLS [WdmlibInit@00016008]
+0001610c IopDevObjApplyPostCreationSettings CALLS [SeUtilSecurityInfoFromSecurityDescriptor@00017320, SeSetSecurityAccessMask@000172f4, NTOSKRNL.EXE::ObOpenObjectByPointer@EXTERNAL:00000010, NTOSKRNL.EXE::ZwSetSecurityObject@EXTERNAL:00000011, NTOSKRNL.EXE::ZwClose@EXTERNAL:00000004]
+000161b8 IoDevObjCreateDeviceSecure CALLS [PpRegStateReadCreateClassCreationSettings@00016724, PpRegStateInitEmptyCreationSettings@00016540, SeSddlSecurityDescriptorFromSDDL@0001722c, FUN_00016370@00016370, PpRegStateUpdateStackCreationSettings@00016854, NTOSKRNL.EXE::IoCreateDevice@EXTERNAL:0000000f, IopDevObjApplyPostCreationSettings@0001610c, NTOSKRNL.EXE::IoDeleteDevice@EXTERNAL:00000005, PpRegStateFreeStackCreationSettings@00016384]
+00016370 FUN_00016370 CALLS []
+00016384 PpRegStateFreeStackCreationSettings CALLS [NTOSKRNL.EXE::ExFreePoolWithTag@EXTERNAL:00000016]
+000163a4 PiRegStateOpenClassKey CALLS [CmRegUtilOpenExistingWstrKey@0001786c, NTOSKRNL.EXE::_snwprintf@00011cc8, CmRegUtilCreateWstrKey@000177f4, NTOSKRNL.EXE::ZwClose@EXTERNAL:00000004, FUN_00011c10@00011c10]
+00016540 PpRegStateInitEmptyCreationSettings CALLS []
+00016558 PiRegStateReadStackCreationSettingsFromKey CALLS [CmRegUtilWstrValueGetFullBuffer@000179f4, NTOSKRNL.EXE::SeCaptureSecurityDescriptor@EXTERNAL:00000015, NTOSKRNL.EXE::ExFreePoolWithTag@EXTERNAL:00000016, SeUtilSecurityInfoFromSecurityDescriptor@00017320, CmRegUtilWstrValueGetDword@000177a4]
+00016724 PpRegStateReadCreateClassCreationSettings CALLS [PiRegStateOpenClassKey@000163a4, CmRegUtilOpenExistingWstrKey@0001786c, NTOSKRNL.EXE::ZwClose@EXTERNAL:00000004, PiRegStateReadStackCreationSettingsFromKey@00016558, CmRegUtilWstrValueSetUcString@00017704, CmRegUtilWstrValueSetWstrString@000176ac]
+00016854 PpRegStateUpdateStackCreationSettings CALLS [PiRegStateOpenClassKey@000163a4, NTOSKRNL.EXE::SeCaptureSecurityDescriptor@EXTERNAL:00000015, NTOSKRNL.EXE::ExFreePoolWithTag@EXTERNAL:00000016, CmRegUtilCreateWstrKey@000177f4, NTOSKRNL.EXE::ZwClose@EXTERNAL:00000004, NTOSKRNL.EXE::RtlLengthSecurityDescriptor@EXTERNAL:00000014, CmRegUtilWstrValueSetFullBuffer@00017744]
+00016980 SepSddlParseWideStringUlong CALLS []
+00016a60 SepSddlAddAceToAcl CALLS [NTOSKRNL.EXE::RtlLengthSid@EXTERNAL:0000001f, NTOSKRNL.EXE::ExAllocatePoolWithTag@EXTERNAL:0000001e, FUN_00011d90@00011d90, memcpy@00011e90, NTOSKRNL.EXE::ExFreePoolWithTag@EXTERNAL:00000016, NTOSKRNL.EXE::RtlAddAccessAllowedAce@EXTERNAL:00000020]
+00016b48 SepSddlLookupAccessMaskInTable CALLS [NTOSKRNL.EXE::_wcsnicmp@00011d70]
+00016be0 SepSddlGetSidForString CALLS [NTOSKRNL.EXE::_wcsnicmp@00011d70, NTOSKRNL.EXE::IoIsWdmVersionAvailable@EXTERNAL:0000001a]
+00016ca4 SepSddlGetAclForString CALLS [NTOSKRNL.EXE::wcschr@00011d64, NTOSKRNL.EXE::ExAllocatePoolWithTag@EXTERNAL:0000001e, FUN_00011d90@00011d90, NTOSKRNL.EXE::_wcsnicmp@00011d70, SepSddlLookupAccessMaskInTable@00016b48, SepSddlParseWideStringUlong@00016980, SepSddlGetSidForString@00016be0, SepSddlAddAceToAcl@00016a60, NTOSKRNL.EXE::ExFreePoolWithTag@EXTERNAL:00000016]
+00017064 SepSddlDaclFromSDDLString CALLS [SepSddlGetAclForString@00016ca4, NTOSKRNL.EXE::ExFreePoolWithTag@EXTERNAL:00000016]
+0001712c SepSddlSecurityDescriptorFromSDDLString CALLS [SepSddlDaclFromSDDLString@00017064, NTOSKRNL.EXE::RtlCreateSecurityDescriptor@EXTERNAL:00000017, NTOSKRNL.EXE::RtlSetDaclSecurityDescriptor@EXTERNAL:00000018, NTOSKRNL.EXE::RtlAbsoluteToSelfRelativeSD@EXTERNAL:00000019, NTOSKRNL.EXE::ExAllocatePoolWithTag@EXTERNAL:0000001e, NTOSKRNL.EXE::ExFreePoolWithTag@EXTERNAL:00000016]
+0001722c SeSddlSecurityDescriptorFromSDDL CALLS [SepSddlSecurityDescriptorFromSDDLString@0001712c, NTOSKRNL.EXE::ExAllocatePoolWithTag@EXTERNAL:0000001e, memcpy@00011e90, NTOSKRNL.EXE::ExFreePoolWithTag@EXTERNAL:00000016]
+000172f4 SeSetSecurityAccessMask CALLS []
+00017320 SeUtilSecurityInfoFromSecurityDescriptor CALLS [NTOSKRNL.EXE::RtlGetOwnerSecurityDescriptor@EXTERNAL:00000024, NTOSKRNL.EXE::RtlGetGroupSecurityDescriptor@EXTERNAL:00000023, NTOSKRNL.EXE::RtlGetSaclSecurityDescriptor@EXTERNAL:00000021, NTOSKRNL.EXE::RtlGetDaclSecurityDescriptor@EXTERNAL:00000022]
+000173f0 CmpRegUtilAllocateUnicodeString CALLS [NTOSKRNL.EXE::ExAllocatePoolWithTag@EXTERNAL:0000001e]
+0001743c CmRegUtilUcValueSetUcString CALLS [NTOSKRNL.EXE::ZwSetValueKey@EXTERNAL:00000028, CmpRegUtilAllocateUnicodeString@000173f0, memcpy@00011e90, NTOSKRNL.EXE::RtlFreeUnicodeString@EXTERNAL:00000029]
+0001753c CmRegUtilUcValueGetDword CALLS [NTOSKRNL.EXE::ZwQueryValueKey@EXTERNAL:00000027, FUN_00011c10@00011c10]
+000175b4 CmRegUtilCreateUcKey CALLS [NTOSKRNL.EXE::ZwCreateKey@EXTERNAL:00000026]
+00017650 CmRegUtilOpenExistingUcKey CALLS [NTOSKRNL.EXE::ZwOpenKey@EXTERNAL:00000025]
+000176ac CmRegUtilWstrValueSetWstrString CALLS [WdmlibRtlInitUnicodeStringEx@00011c68, CmRegUtilUcValueSetUcString@0001743c]
+00017704 CmRegUtilWstrValueSetUcString CALLS [WdmlibRtlInitUnicodeStringEx@00011c68, CmRegUtilUcValueSetUcString@0001743c]
+00017744 CmRegUtilWstrValueSetFullBuffer CALLS [WdmlibRtlInitUnicodeStringEx@00011c68, NTOSKRNL.EXE::ZwSetValueKey@EXTERNAL:00000028]
+000177a4 CmRegUtilWstrValueGetDword CALLS [WdmlibRtlInitUnicodeStringEx@00011c68, CmRegUtilUcValueGetDword@0001753c]
+000177f4 CmRegUtilCreateWstrKey CALLS [WdmlibRtlInitUnicodeStringEx@00011c68, CmRegUtilCreateUcKey@000175b4]
+0001786c CmRegUtilOpenExistingWstrKey CALLS [WdmlibRtlInitUnicodeStringEx@00011c68, CmRegUtilOpenExistingUcKey@00017650]
+000178bc CmRegUtilUcValueGetFullBuffer CALLS [NTOSKRNL.EXE::ExAllocatePoolWithTag@EXTERNAL:0000001e, NTOSKRNL.EXE::ZwQueryValueKey@EXTERNAL:00000027, NTOSKRNL.EXE::ExFreePoolWithTag@EXTERNAL:00000016]
+000179f4 CmRegUtilWstrValueGetFullBuffer CALLS [WdmlibRtlInitUnicodeStringEx@00011c68, CmRegUtilUcValueGetFullBuffer@000178bc]
+00018008 FUN_00018008 CALLS []
+00018064 entry CALLS [FUN_00018008@00018008, FUN_00011b30@00011b30]
+
+===== IMPORTANT GLOBAL REFERENCES =====
+GLOBAL=DAT_00014360_state Address=00014360
+  FROM=000116ed IN=FUN_00011438 @ 00011438 TYPE=READ
+  FROM=000116ff IN=FUN_00011438 @ 00011438 TYPE=WRITE
+GLOBAL=DAT_00014370_mapping_base_table Address=00014370
+  FROM=000113e6 IN=FUN_00011384 @ 00011384 TYPE=DATA
+  FROM=000113f6 IN=FUN_00011384 @ 00011384 TYPE=READ
+  FROM=00011893 IN=FUN_00011438 @ 00011438 TYPE=DATA
+  FROM=0001192a IN=FUN_00011438 @ 00011438 TYPE=DATA
+  FROM=000119c9 IN=FUN_00011438 @ 00011438 TYPE=DATA
+  FROM=000119df IN=FUN_00011438 @ 00011438 TYPE=DATA
+GLOBAL=DAT_00014b70_mapping_size_table Address=00014b70
+  FROM=00011413 IN=FUN_00011384 @ 00011384 TYPE=DATA
+  FROM=000118a8 IN=FUN_00011438 @ 00011438 TYPE=DATA
+  FROM=0001193f IN=FUN_00011438 @ 00011438 TYPE=DATA
+  FROM=000119d6 IN=FUN_00011438 @ 00011438 TYPE=DATA
+  FROM=000119e7 IN=FUN_00011438 @ 00011438 TYPE=DATA
+
+===== IOCTL CONSTANT HITS =====
+00011476 MOV R8D,0x8000202c IN=FUN_00011438 @ 00011438
+0001148e CMP EAX,0x80002000 IN=FUN_00011438 @ 00011438
+00011499 CMP EAX,0x80002004 IN=FUN_00011438 @ 00011438
+000114a4 CMP EAX,0x80002008 IN=FUN_00011438 @ 00011438
+000114af CMP EAX,0x8000200c IN=FUN_00011438 @ 00011438
+000114ba CMP EAX,0x80002010 IN=FUN_00011438 @ 00011438
+000114c5 CMP EAX,0x80002014 IN=FUN_00011438 @ 00011438
+000114d0 CMP EAX,0x80002018 IN=FUN_00011438 @ 00011438
+000114db CMP EAX,0x8000201c IN=FUN_00011438 @ 00011438
+000114e2 CMP EAX,0x80002028 IN=FUN_00011438 @ 00011438
+00011723 CMP EAX,0x80002030 IN=FUN_00011438 @ 00011438
+0001172e CMP EAX,0x80002034 IN=FUN_00011438 @ 00011438
+00011739 CMP EAX,0x80002040 IN=FUN_00011438 @ 00011438
+00011744 CMP EAX,0x80002044 IN=FUN_00011438 @ 00011438
+0001174f CMP EAX,0x80002048 IN=FUN_00011438 @ 00011438
+0001175a CMP EAX,0x8000204c IN=FUN_00011438 @ 00011438
+00011765 CMP EAX,0x80002050 IN=FUN_00011438 @ 00011438
+00011770 CMP EAX,0x80002054 IN=FUN_00011438 @ 00011438
+
+===== MEMORY WRITE / PRIVILEGED INSTRUCTIONS IN DISPATCH RANGE =====
+00011438 MOV qword ptr [RSP + 0x8],RBX IN=FUN_00011438 @ 00011438
+0001143d MOV qword ptr [RSP + 0x20],RSI IN=FUN_00011438 @ 00011438
+00011442 MOV qword ptr [RSP + 0x10],RDX IN=FUN_00011438 @ 00011438
+00011529 IN EAX,DX IN=FUN_00011438 @ 00011438
+0001154f OUT DX,EAX IN=FUN_00011438 @ 00011438
+0001157e IN EAX,DX IN=FUN_00011438 @ 00011438
+000115a5 OUT DX,AX IN=FUN_00011438 @ 00011438
+000115d5 IN EAX,DX IN=FUN_00011438 @ 00011438
+000115fb OUT DX,AL IN=FUN_00011438 @ 00011438
+00011620 IN EAX,DX IN=FUN_00011438 @ 00011438
+00011648 IN AX,DX IN=FUN_00011438 @ 00011438
+00011674 IN AL,DX IN=FUN_00011438 @ 00011438
+000116ff MOV dword ptr [0x00014360],EAX IN=FUN_00011438 @ 00011438
+000117c6 MOV dword ptr [RSP + 0x28],ECX IN=FUN_00011438 @ 00011438
+000117ca MOV dword ptr [RSP + 0x20],EDX IN=FUN_00011438 @ 00011438
+0001182d MOV dword ptr [RSP + 0x28],ECX IN=FUN_00011438 @ 00011438
+00011834 MOV dword ptr [RSP + 0x20],EAX IN=FUN_00011438 @ 00011438
+000119df MOV qword ptr [RCX + RDX*0x8 + 0x4370],RSI IN=FUN_00011438 @ 00011438
+000119e7 MOV dword ptr [RCX + RDX*0x4 + 0x4b70],ESI IN=FUN_00011438 @ 00011438
+00011a78 WRMSR IN=FUN_00011438 @ 00011438
+00011ac4 RDMSR IN=FUN_00011438 @ 00011438
+00011acd MOV qword ptr [RSP + 0x50],RAX IN=FUN_00011438 @ 00011438
+
+===== DECOMPILE FUN_00011044_address_filter 00011044 =====
+
+ulonglong FUN_00011044(longlong param_1,uint param_2,undefined4 *param_3)
+
+{
+  ulonglong in_RAX;
+  ulonglong uVar1;
+  uint uVar2;
+  undefined1 uVar3;
+  char local_res20 [8];
+  uint local_28 [4];
+  
+  if ((param_1 < 0xc0000) || (in_RAX = param_1 + (ulonglong)param_2, 0xe0000 < (longlong)in_RAX)) {
+    if ((uint)param_3[3] < 6) {
+      local_28[0] = 0;
+      uVar3 = 1;
+      uVar2 = (param_3[2] & 7) << 5 | param_3[1] & 0x1f;
+      in_RAX = HalGetBusDataByOffset(4,*param_3,uVar2,local_res20,0xb,1);
+      if ((((local_res20[0] == '\x03') &&
+           (in_RAX = HalGetBusDataByOffset(4,*param_3,uVar2,local_28,param_3[3] * 4 + 0x10,4),
+           local_28[0] != 0xffffffff)) && (local_28[0] != 0)) && ((local_28[0] & 1) == 0)) {
+        uVar1 = (ulonglong)(local_28[0] & 0xffffff00);
+        if ((param_1 < (longlong)uVar1) ||
+           (uVar2 = (local_28[0] & 0xffffff00) + 0x1000000, uVar1 = (ulonglong)uVar2,
+           (longlong)(ulonglong)uVar2 < (longlong)((ulonglong)param_2 + param_1))) {
+          uVar3 = 0;
+        }
+        return CONCAT71((int7)(uVar1 >> 8),uVar3);
+      }
+    }
+    uVar1 = in_RAX & 0xffffffffffffff00;
+  }
+  else {
+    uVar1 = CONCAT71((int7)(in_RAX >> 8),1);
+  }
+  return uVar1;
+}
+
+
+
+===== DECOMPILE FUN_00011150_physical_memory_map 00011150 =====
+
+/* WARNING: Type propagation algorithm not settling */
+
+ulonglong FUN_00011150(undefined8 param_1,longlong *param_2,uint param_3,uint param_4)
+
+{
+  longlong lVar1;
+  char cVar2;
+  char cVar3;
+  uint uVar4;
+  ulonglong uVar5;
+  undefined4 local_res10 [2];
+  undefined4 local_res18 [2];
+  undefined8 local_88;
+  longlong local_80;
+  longlong local_78;
+  uint local_70 [2];
+  ulonglong local_68;
+  ulonglong local_60 [2];
+  undefined4 local_50 [2];
+  undefined8 local_48;
+  undefined1 *local_40;
+  undefined4 local_38;
+  undefined8 local_30;
+  undefined8 local_28;
+  undefined1 local_20 [24];
+  
+  local_88 = 0;
+  local_60[1] = 0;
+  if ((param_3 < 0x20) || (param_4 < 8)) {
+    return 0xc000009a;
+  }
+  uVar5 = FUN_00011044(*param_2,*(uint *)(param_2 + 1),(undefined4 *)((longlong)param_2 + 0xc));
+  if ((char)uVar5 != '\0') {
+    lVar1 = *param_2;
+    local_res10[0] = 0;
+    local_res18[0] = 0;
+    uVar4 = *(uint *)(param_2 + 1);
+    RtlInitUnicodeString(local_20,L"\\Device\\PhysicalMemory");
+    local_48 = 0;
+    local_30 = 0;
+    local_28 = 0;
+    local_40 = local_20;
+    local_50[0] = 0x30;
+    local_38 = 0x240;
+    uVar5 = ZwOpenSection(&local_88,0xf001f,local_50);
+    if ((int)uVar5 < 0) {
+      return uVar5;
+    }
+    uVar5 = ObReferenceObjectByHandle(local_88,0xf001f,0,0,local_60 + 1,0);
+    if ((int)uVar5 < 0) {
+      return uVar5;
+    }
+    local_80 = lVar1 + (ulonglong)uVar4;
+    cVar2 = HalTranslateBusAddress(1,0,lVar1,local_res18,local_70);
+    cVar3 = HalTranslateBusAddress(1,0,local_80,local_res10,&local_80);
+    if ((cVar2 != '\0') && (cVar3 != '\0')) {
+      local_68 = (ulonglong)local_70[0];
+      if ((int)(local_80 - local_68) != 0) {
+        local_78 = 0;
+        local_60[0] = local_80 - local_68 & 0xffffffff;
+        uVar4 = ZwMapViewOfSection(local_88,0xffffffffffffffff,&local_78,0,local_60[0],&local_68,
+                                   local_60,1,0,0x204);
+        if ((int)uVar4 < 0) {
+          ZwClose(local_88);
+          return (ulonglong)uVar4;
+        }
+        local_78 = local_78 + ((ulonglong)local_70[0] - (local_68 & 0xffffffff));
+        *param_2 = local_78;
+        ZwClose(local_88);
+        return 0;
+      }
+    }
+  }
+  return 0xc0000001;
+}
+
+
+
+===== DECOMPILE FUN_00011384_mmio_map 00011384 =====
+
+undefined8 FUN_00011384(longlong *param_1)
+
+{
+  char cVar1;
+  ulonglong uVar2;
+  undefined8 uVar3;
+  longlong lVar4;
+  longlong *plVar5;
+  uint uVar6;
+  undefined4 local_res8 [2];
+  undefined8 local_res10 [3];
+  
+  uVar2 = FUN_00011044(*param_1,*(uint *)(param_1 + 2),(undefined4 *)(param_1 + 4));
+  if ((char)uVar2 == '\0') {
+    uVar3 = 0xc0000001;
+  }
+  else {
+    local_res8[0] = 0;
+    cVar1 = HalTranslateBusAddress(1,0,*param_1,local_res8,local_res10);
+    if ((cVar1 == '\0') || (lVar4 = MmMapIoSpace(local_res10[0],(int)param_1[2],0), lVar4 == 0)) {
+      uVar3 = 0xc000009a;
+    }
+    else {
+      param_1[1] = lVar4;
+      uVar2 = 0;
+      plVar5 = &DAT_00014370;
+      do {
+        if (*plVar5 == 0) {
+          (&DAT_00014370)[uVar2] = lVar4;
+          *(int *)(&DAT_00014b70 + uVar2 * 4) = (int)param_1[2];
+          *(int *)((longlong)param_1 + 0x2c) = (int)uVar2;
+          break;
+        }
+        uVar6 = (int)uVar2 + 1;
+        uVar2 = (ulonglong)uVar6;
+        plVar5 = plVar5 + 1;
+      } while (uVar6 < 0x100);
+      uVar3 = 0;
+    }
+  }
+  return uVar3;
+}
+
+
+
+===== DECOMPILE FUN_00011438_device_control_dispatch 00011438 =====
+
+undefined4 FUN_00011438(undefined8 param_1,longlong param_2)
+
+{
+  uint uVar1;
+  int iVar2;
+  char *pcVar3;
+  longlong *plVar4;
+  longlong lVar5;
+  char cVar6;
+  ushort uVar7;
+  uint uVar8;
+  undefined4 uVar9;
+  ulonglong uVar10;
+  undefined8 uVar11;
+  
+  *(undefined4 *)(param_2 + 0x30) = 0;
+  *(undefined8 *)(param_2 + 0x38) = 0;
+  pcVar3 = *(char **)(param_2 + 0xb8);
+  plVar4 = *(longlong **)(param_2 + 0x18);
+  uVar8 = *(uint *)(pcVar3 + 0x10);
+  if (*pcVar3 != '\x0e') goto LAB_00011b0a;
+  uVar1 = *(uint *)(pcVar3 + 0x18);
+  if (uVar1 < 0x8000202d) {
+    if (uVar1 == 0x8000202c) {
+      if (uVar8 == 8) {
+        if ((int)*plVar4 != -0x80000000) {
+          DAT_00014360 = (int)*plVar4;
+        }
+        DAT_00014360 = DAT_00014360 + *(int *)((longlong)plVar4 + 4);
+        *(int *)plVar4 = DAT_00014360;
+        *(undefined4 *)(param_2 + 0x30) = 0;
+        *(undefined8 *)(param_2 + 0x38) = 8;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002000) {
+      uVar10 = FUN_00011150(param_1,plVar4,uVar8,*(uint *)(pcVar3 + 8));
+      *(int *)(param_2 + 0x30) = (int)uVar10;
+      if ((int)uVar10 < 0) {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      else {
+        *(undefined8 *)(param_2 + 0x38) = 8;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002004) {
+      if (uVar8 < 8) {
+        *(undefined4 *)(param_2 + 0x30) = 0xc0000001;
+      }
+      else {
+        uVar9 = ZwUnmapViewOfSection(0xffffffffffffffff,*plVar4);
+        *(undefined4 *)(param_2 + 0x30) = uVar9;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002008) {
+      if (uVar8 == 8) {
+        cVar6 = in((short)*plVar4);
+        *(int *)((longlong)plVar4 + 4) = (int)cVar6;
+        *(undefined4 *)(param_2 + 0x30) = 0;
+        *(undefined8 *)(param_2 + 0x38) = 8;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x8000200c) {
+      if (uVar8 == 8) {
+        uVar7 = in((short)*plVar4);
+        *(uint *)((longlong)plVar4 + 4) = (uint)uVar7;
+        *(undefined4 *)(param_2 + 0x30) = 0;
+        *(undefined8 *)(param_2 + 0x38) = 8;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002010) {
+      if (uVar8 == 8) {
+        uVar9 = in((short)*plVar4);
+        *(undefined4 *)((longlong)plVar4 + 4) = uVar9;
+        *(undefined4 *)(param_2 + 0x30) = 0;
+        *(undefined8 *)(param_2 + 0x38) = 8;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002014) {
+      if (uVar8 == 8) {
+        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+           ((uVar8 & 0xfc) - 0x10 < 0x18)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          out((short)*plVar4,*(undefined1 *)((longlong)plVar4 + 4));
+          *(undefined4 *)(param_2 + 0x30) = 0;
+          *(undefined8 *)(param_2 + 0x38) = 8;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002018) {
+      if (uVar8 == 8) {
+        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+           ((uVar8 & 0xfc) - 0x10 < 0x18)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          out((short)*plVar4,*(undefined2 *)((longlong)plVar4 + 4));
+          *(undefined4 *)(param_2 + 0x30) = 0;
+          *(undefined8 *)(param_2 + 0x38) = 8;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x8000201c) {
+      if (uVar8 == 8) {
+        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+           ((uVar8 & 0xfc) - 0x10 < 0x18)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          out((short)*plVar4,*(undefined4 *)((longlong)plVar4 + 4));
+          *(undefined4 *)(param_2 + 0x30) = 0;
+          *(undefined8 *)(param_2 + 0x38) = 8;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002028) {
+      if (uVar8 == 8) {
+        *(undefined4 *)plVar4 = 1;
+        *(undefined4 *)((longlong)plVar4 + 4) = 8;
+        *(undefined4 *)(param_2 + 0x30) = 0;
+        *(undefined8 *)(param_2 + 0x38) = 8;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+  }
+  else {
+    if (uVar1 == 0x80002030) {
+      if (uVar8 == 0xc) {
+        iVar2 = (int)*plVar4;
+        if ((iVar2 - 0x174U < 3) || (iVar2 + 0x3fffff80U < 5)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          uVar11 = rdmsr(iVar2);
+          *(int *)((longlong)plVar4 + 4) = (int)((ulonglong)uVar11 >> 0x20);
+          *(int *)(plVar4 + 1) = (int)uVar11;
+          *(undefined4 *)(param_2 + 0x30) = 0;
+          *(undefined8 *)(param_2 + 0x38) = 0xc;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002034) {
+      if (uVar8 == 0xc) {
+        iVar2 = (int)*plVar4;
+        if ((iVar2 - 0x174U < 3) || (iVar2 + 0x3fffff80U < 5)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          wrmsr(iVar2,CONCAT44(*(undefined4 *)((longlong)plVar4 + 4),(int)plVar4[1]));
+          *(undefined4 *)(param_2 + 0x30) = 0;
+          *(undefined8 *)(param_2 + 0x38) = 0xc;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002040) {
+      if (uVar8 == 0x30) {
+        uVar11 = FUN_00011384(plVar4);
+        *(int *)(param_2 + 0x30) = (int)uVar11;
+        if ((int)uVar11 < 0) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000009a;
+        }
+        else {
+          *(undefined8 *)(param_2 + 0x38) = 0x30;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002044) {
+      if (uVar8 == 0x30) {
+        if (plVar4[1] == 0) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          MmUnmapIoSpace(plVar4[1],(int)plVar4[2]);
+          if (((*(uint *)((longlong)plVar4 + 0x2c) < 0x100) &&
+              (uVar10 = (ulonglong)*(uint *)((longlong)plVar4 + 0x2c),
+              (&DAT_00014370)[uVar10] == plVar4[1])) &&
+             (*(int *)(&DAT_00014b70 + uVar10 * 4) == (int)plVar4[2])) {
+            (&DAT_00014370)[uVar10] = 0;
+            *(undefined4 *)(&DAT_00014b70 + uVar10 * 4) = 0;
+          }
+          *(undefined4 *)(param_2 + 0x30) = 0;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002048) {
+      if (uVar8 == 0x30) {
+        lVar5 = plVar4[1];
+        if (((lVar5 != 0) && (*(uint *)((longlong)plVar4 + 0x2c) < 0x100)) &&
+           ((&DAT_00014370)[*(uint *)((longlong)plVar4 + 0x2c)] == lVar5)) {
+          iVar2 = (int)plVar4[3];
+          uVar10 = (ulonglong)*(uint *)((longlong)plVar4 + 0x14);
+          if (*(uint *)((longlong)plVar4 + 0x14) + iVar2 <=
+              *(uint *)(&DAT_00014b70 + (ulonglong)*(uint *)((longlong)plVar4 + 0x2c) * 4)) {
+            if (iVar2 == 1) {
+              *(uint *)((longlong)plVar4 + 0x1c) = (uint)*(byte *)(uVar10 + lVar5);
+            }
+            else if (iVar2 == 2) {
+              *(uint *)((longlong)plVar4 + 0x1c) = (uint)*(ushort *)(uVar10 + lVar5);
+            }
+            else if (iVar2 == 4) {
+              *(undefined4 *)((longlong)plVar4 + 0x1c) = *(undefined4 *)(uVar10 + lVar5);
+            }
+            *(undefined4 *)(param_2 + 0x30) = 0;
+            *(undefined8 *)(param_2 + 0x38) = 0x30;
+            goto LAB_00011b0a;
+          }
+        }
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x8000204c) {
+      if (uVar8 == 0x30) {
+        lVar5 = plVar4[1];
+        if (((lVar5 != 0) && (*(uint *)((longlong)plVar4 + 0x2c) < 0x100)) &&
+           ((&DAT_00014370)[*(uint *)((longlong)plVar4 + 0x2c)] == lVar5)) {
+          iVar2 = (int)plVar4[3];
+          uVar10 = (ulonglong)*(uint *)((longlong)plVar4 + 0x14);
+          if (*(uint *)((longlong)plVar4 + 0x14) + iVar2 <=
+              *(uint *)(&DAT_00014b70 + (ulonglong)*(uint *)((longlong)plVar4 + 0x2c) * 4)) {
+            if (iVar2 == 1) {
+              *(undefined1 *)(uVar10 + lVar5) = *(undefined1 *)((longlong)plVar4 + 0x1c);
+            }
+            else if (iVar2 == 2) {
+              *(undefined2 *)(uVar10 + lVar5) = *(undefined2 *)((longlong)plVar4 + 0x1c);
+            }
+            else if (iVar2 == 4) {
+              *(undefined4 *)(uVar10 + lVar5) = *(undefined4 *)((longlong)plVar4 + 0x1c);
+            }
+            *(undefined4 *)(param_2 + 0x30) = 0;
+            *(undefined8 *)(param_2 + 0x38) = 0x30;
+            goto LAB_00011b0a;
+          }
+        }
+        *(undefined4 *)(param_2 + 0x30) = 0xc000009a;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002050) {
+      if (uVar8 == 0x18) {
+        uVar8 = *(uint *)(plVar4 + 2);
+        if ((uVar8 == 0) || (4 < uVar8)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          HalGetBusDataByOffset
+                    (4,(int)*plVar4,
+                     (*(uint *)(plVar4 + 1) & 7) << 5 | *(uint *)((longlong)plVar4 + 4) & 0x1f,
+                     (longlong)plVar4 + 0x14,*(undefined4 *)((longlong)plVar4 + 0xc),uVar8);
+          *(undefined4 *)(param_2 + 0x30) = 0;
+          *(undefined8 *)(param_2 + 0x38) = 0x18;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002054) {
+      if (uVar8 == 0x18) {
+        uVar8 = *(uint *)(plVar4 + 2);
+        if ((uVar8 == 0) || (4 < uVar8)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          uVar1 = *(uint *)((longlong)plVar4 + 0xc);
+          if ((uVar1 < 0x10) || (0x27 < uVar1)) {
+            HalSetBusDataByOffset
+                      (4,(int)*plVar4,
+                       (*(uint *)(plVar4 + 1) & 7) << 5 | *(uint *)((longlong)plVar4 + 4) & 0x1f,
+                       (longlong)plVar4 + 0x14,uVar1,uVar8);
+            *(undefined4 *)(param_2 + 0x30) = 0;
+            *(undefined8 *)(param_2 + 0x38) = 0x18;
+          }
+          else {
+            *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+          }
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+  }
+  *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+LAB_00011b0a:
+  uVar9 = *(undefined4 *)(param_2 + 0x30);
+  IofCompleteRequest(param_2,0);
+  return uVar9;
+}
+
+
+
+===== DECOMPILE FUN_00011b30_driver_entry 00011b30 =====
+
+undefined8 FUN_00011b30(longlong param_1)
+
+{
+  undefined8 uVar1;
+  undefined1 local_res18 [16];
+  undefined1 local_38 [16];
+  undefined1 local_28 [16];
+  undefined1 local_18 [16];
+  
+  RtlInitUnicodeString(local_38,u__Device_RTCore64_00014310);
+  RtlInitUnicodeString(local_18,u__DosDevices_RTCore64_000142e0);
+  RtlInitUnicodeString(local_28);
+  uVar1 = WdmlibIoCreateDeviceSecure(param_1,0,local_38,0x22,0x100,0,local_28,0,local_res18);
+  if (-1 < (int)uVar1) {
+    uVar1 = IoCreateSymbolicLink(local_18,local_38);
+    if (-1 < (int)uVar1) {
+      *(code **)(param_1 + 0x70) = FUN_00011438;
+      *(code **)(param_1 + 0x80) = FUN_00011438;
+      *(code **)(param_1 + 0xe0) = FUN_00011438;
+      *(code **)(param_1 + 0x68) = FUN_00011008;
+      uVar1 = 0;
+    }
+  }
+  return uVar1;
+}
+
+
+
+===== DECOMPILE ALL NON-EXTERNAL FUNCTIONS =====
+----- FUNCTION FUN_00011008 @ 00011008 -----
+
+void FUN_00011008(longlong param_1)
+
+{
+  undefined1 local_18 [16];
+  
+  RtlInitUnicodeString(local_18,u__DosDevices_RTCore64_000142e0);
+  IoDeleteSymbolicLink(local_18);
+  IoDeleteDevice(*(undefined8 *)(param_1 + 8));
+  return;
+}
+
+
+----- FUNCTION FUN_00011044 @ 00011044 -----
+
+ulonglong FUN_00011044(longlong param_1,uint param_2,undefined4 *param_3)
+
+{
+  ulonglong in_RAX;
+  ulonglong uVar1;
+  uint uVar2;
+  undefined1 uVar3;
+  char local_res20 [8];
+  uint local_28 [4];
+  
+  if ((param_1 < 0xc0000) || (in_RAX = param_1 + (ulonglong)param_2, 0xe0000 < (longlong)in_RAX)) {
+    if ((uint)param_3[3] < 6) {
+      local_28[0] = 0;
+      uVar3 = 1;
+      uVar2 = (param_3[2] & 7) << 5 | param_3[1] & 0x1f;
+      in_RAX = HalGetBusDataByOffset(4,*param_3,uVar2,local_res20,0xb,1);
+      if ((((local_res20[0] == '\x03') &&
+           (in_RAX = HalGetBusDataByOffset(4,*param_3,uVar2,local_28,param_3[3] * 4 + 0x10,4),
+           local_28[0] != 0xffffffff)) && (local_28[0] != 0)) && ((local_28[0] & 1) == 0)) {
+        uVar1 = (ulonglong)(local_28[0] & 0xffffff00);
+        if ((param_1 < (longlong)uVar1) ||
+           (uVar2 = (local_28[0] & 0xffffff00) + 0x1000000, uVar1 = (ulonglong)uVar2,
+           (longlong)(ulonglong)uVar2 < (longlong)((ulonglong)param_2 + param_1))) {
+          uVar3 = 0;
+        }
+        return CONCAT71((int7)(uVar1 >> 8),uVar3);
+      }
+    }
+    uVar1 = in_RAX & 0xffffffffffffff00;
+  }
+  else {
+    uVar1 = CONCAT71((int7)(in_RAX >> 8),1);
+  }
+  return uVar1;
+}
+
+
+----- FUNCTION FUN_00011150 @ 00011150 -----
+
+/* WARNING: Type propagation algorithm not settling */
+
+ulonglong FUN_00011150(undefined8 param_1,longlong *param_2,uint param_3,uint param_4)
+
+{
+  longlong lVar1;
+  char cVar2;
+  char cVar3;
+  uint uVar4;
+  ulonglong uVar5;
+  undefined4 local_res10 [2];
+  undefined4 local_res18 [2];
+  undefined8 local_88;
+  longlong local_80;
+  longlong local_78;
+  uint local_70 [2];
+  ulonglong local_68;
+  ulonglong local_60 [2];
+  undefined4 local_50 [2];
+  undefined8 local_48;
+  undefined1 *local_40;
+  undefined4 local_38;
+  undefined8 local_30;
+  undefined8 local_28;
+  undefined1 local_20 [24];
+  
+  local_88 = 0;
+  local_60[1] = 0;
+  if ((param_3 < 0x20) || (param_4 < 8)) {
+    return 0xc000009a;
+  }
+  uVar5 = FUN_00011044(*param_2,*(uint *)(param_2 + 1),(undefined4 *)((longlong)param_2 + 0xc));
+  if ((char)uVar5 != '\0') {
+    lVar1 = *param_2;
+    local_res10[0] = 0;
+    local_res18[0] = 0;
+    uVar4 = *(uint *)(param_2 + 1);
+    RtlInitUnicodeString(local_20,L"\\Device\\PhysicalMemory");
+    local_48 = 0;
+    local_30 = 0;
+    local_28 = 0;
+    local_40 = local_20;
+    local_50[0] = 0x30;
+    local_38 = 0x240;
+    uVar5 = ZwOpenSection(&local_88,0xf001f,local_50);
+    if ((int)uVar5 < 0) {
+      return uVar5;
+    }
+    uVar5 = ObReferenceObjectByHandle(local_88,0xf001f,0,0,local_60 + 1,0);
+    if ((int)uVar5 < 0) {
+      return uVar5;
+    }
+    local_80 = lVar1 + (ulonglong)uVar4;
+    cVar2 = HalTranslateBusAddress(1,0,lVar1,local_res18,local_70);
+    cVar3 = HalTranslateBusAddress(1,0,local_80,local_res10,&local_80);
+    if ((cVar2 != '\0') && (cVar3 != '\0')) {
+      local_68 = (ulonglong)local_70[0];
+      if ((int)(local_80 - local_68) != 0) {
+        local_78 = 0;
+        local_60[0] = local_80 - local_68 & 0xffffffff;
+        uVar4 = ZwMapViewOfSection(local_88,0xffffffffffffffff,&local_78,0,local_60[0],&local_68,
+                                   local_60,1,0,0x204);
+        if ((int)uVar4 < 0) {
+          ZwClose(local_88);
+          return (ulonglong)uVar4;
+        }
+        local_78 = local_78 + ((ulonglong)local_70[0] - (local_68 & 0xffffffff));
+        *param_2 = local_78;
+        ZwClose(local_88);
+        return 0;
+      }
+    }
+  }
+  return 0xc0000001;
+}
+
+
+----- FUNCTION FUN_00011384 @ 00011384 -----
+
+undefined8 FUN_00011384(longlong *param_1)
+
+{
+  char cVar1;
+  ulonglong uVar2;
+  undefined8 uVar3;
+  longlong lVar4;
+  longlong *plVar5;
+  uint uVar6;
+  undefined4 local_res8 [2];
+  undefined8 local_res10 [3];
+  
+  uVar2 = FUN_00011044(*param_1,*(uint *)(param_1 + 2),(undefined4 *)(param_1 + 4));
+  if ((char)uVar2 == '\0') {
+    uVar3 = 0xc0000001;
+  }
+  else {
+    local_res8[0] = 0;
+    cVar1 = HalTranslateBusAddress(1,0,*param_1,local_res8,local_res10);
+    if ((cVar1 == '\0') || (lVar4 = MmMapIoSpace(local_res10[0],(int)param_1[2],0), lVar4 == 0)) {
+      uVar3 = 0xc000009a;
+    }
+    else {
+      param_1[1] = lVar4;
+      uVar2 = 0;
+      plVar5 = &DAT_00014370;
+      do {
+        if (*plVar5 == 0) {
+          (&DAT_00014370)[uVar2] = lVar4;
+          *(int *)(&DAT_00014b70 + uVar2 * 4) = (int)param_1[2];
+          *(int *)((longlong)param_1 + 0x2c) = (int)uVar2;
+          break;
+        }
+        uVar6 = (int)uVar2 + 1;
+        uVar2 = (ulonglong)uVar6;
+        plVar5 = plVar5 + 1;
+      } while (uVar6 < 0x100);
+      uVar3 = 0;
+    }
+  }
+  return uVar3;
+}
+
+
+----- FUNCTION FUN_00011438 @ 00011438 -----
+
+undefined4 FUN_00011438(undefined8 param_1,longlong param_2)
+
+{
+  uint uVar1;
+  int iVar2;
+  char *pcVar3;
+  longlong *plVar4;
+  longlong lVar5;
+  char cVar6;
+  ushort uVar7;
+  uint uVar8;
+  undefined4 uVar9;
+  ulonglong uVar10;
+  undefined8 uVar11;
+  
+  *(undefined4 *)(param_2 + 0x30) = 0;
+  *(undefined8 *)(param_2 + 0x38) = 0;
+  pcVar3 = *(char **)(param_2 + 0xb8);
+  plVar4 = *(longlong **)(param_2 + 0x18);
+  uVar8 = *(uint *)(pcVar3 + 0x10);
+  if (*pcVar3 != '\x0e') goto LAB_00011b0a;
+  uVar1 = *(uint *)(pcVar3 + 0x18);
+  if (uVar1 < 0x8000202d) {
+    if (uVar1 == 0x8000202c) {
+      if (uVar8 == 8) {
+        if ((int)*plVar4 != -0x80000000) {
+          DAT_00014360 = (int)*plVar4;
+        }
+        DAT_00014360 = DAT_00014360 + *(int *)((longlong)plVar4 + 4);
+        *(int *)plVar4 = DAT_00014360;
+        *(undefined4 *)(param_2 + 0x30) = 0;
+        *(undefined8 *)(param_2 + 0x38) = 8;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002000) {
+      uVar10 = FUN_00011150(param_1,plVar4,uVar8,*(uint *)(pcVar3 + 8));
+      *(int *)(param_2 + 0x30) = (int)uVar10;
+      if ((int)uVar10 < 0) {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      else {
+        *(undefined8 *)(param_2 + 0x38) = 8;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002004) {
+      if (uVar8 < 8) {
+        *(undefined4 *)(param_2 + 0x30) = 0xc0000001;
+      }
+      else {
+        uVar9 = ZwUnmapViewOfSection(0xffffffffffffffff,*plVar4);
+        *(undefined4 *)(param_2 + 0x30) = uVar9;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002008) {
+      if (uVar8 == 8) {
+        cVar6 = in((short)*plVar4);
+        *(int *)((longlong)plVar4 + 4) = (int)cVar6;
+        *(undefined4 *)(param_2 + 0x30) = 0;
+        *(undefined8 *)(param_2 + 0x38) = 8;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x8000200c) {
+      if (uVar8 == 8) {
+        uVar7 = in((short)*plVar4);
+        *(uint *)((longlong)plVar4 + 4) = (uint)uVar7;
+        *(undefined4 *)(param_2 + 0x30) = 0;
+        *(undefined8 *)(param_2 + 0x38) = 8;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002010) {
+      if (uVar8 == 8) {
+        uVar9 = in((short)*plVar4);
+        *(undefined4 *)((longlong)plVar4 + 4) = uVar9;
+        *(undefined4 *)(param_2 + 0x30) = 0;
+        *(undefined8 *)(param_2 + 0x38) = 8;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002014) {
+      if (uVar8 == 8) {
+        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+           ((uVar8 & 0xfc) - 0x10 < 0x18)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          out((short)*plVar4,*(undefined1 *)((longlong)plVar4 + 4));
+          *(undefined4 *)(param_2 + 0x30) = 0;
+          *(undefined8 *)(param_2 + 0x38) = 8;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002018) {
+      if (uVar8 == 8) {
+        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+           ((uVar8 & 0xfc) - 0x10 < 0x18)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          out((short)*plVar4,*(undefined2 *)((longlong)plVar4 + 4));
+          *(undefined4 *)(param_2 + 0x30) = 0;
+          *(undefined8 *)(param_2 + 0x38) = 8;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x8000201c) {
+      if (uVar8 == 8) {
+        if ((((int)*plVar4 == 0xcfc) && (uVar8 = in(0xcf8), (int)uVar8 < 0)) &&
+           ((uVar8 & 0xfc) - 0x10 < 0x18)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          out((short)*plVar4,*(undefined4 *)((longlong)plVar4 + 4));
+          *(undefined4 *)(param_2 + 0x30) = 0;
+          *(undefined8 *)(param_2 + 0x38) = 8;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002028) {
+      if (uVar8 == 8) {
+        *(undefined4 *)plVar4 = 1;
+        *(undefined4 *)((longlong)plVar4 + 4) = 8;
+        *(undefined4 *)(param_2 + 0x30) = 0;
+        *(undefined8 *)(param_2 + 0x38) = 8;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+  }
+  else {
+    if (uVar1 == 0x80002030) {
+      if (uVar8 == 0xc) {
+        iVar2 = (int)*plVar4;
+        if ((iVar2 - 0x174U < 3) || (iVar2 + 0x3fffff80U < 5)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          uVar11 = rdmsr(iVar2);
+          *(int *)((longlong)plVar4 + 4) = (int)((ulonglong)uVar11 >> 0x20);
+          *(int *)(plVar4 + 1) = (int)uVar11;
+          *(undefined4 *)(param_2 + 0x30) = 0;
+          *(undefined8 *)(param_2 + 0x38) = 0xc;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002034) {
+      if (uVar8 == 0xc) {
+        iVar2 = (int)*plVar4;
+        if ((iVar2 - 0x174U < 3) || (iVar2 + 0x3fffff80U < 5)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          wrmsr(iVar2,CONCAT44(*(undefined4 *)((longlong)plVar4 + 4),(int)plVar4[1]));
+          *(undefined4 *)(param_2 + 0x30) = 0;
+          *(undefined8 *)(param_2 + 0x38) = 0xc;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002040) {
+      if (uVar8 == 0x30) {
+        uVar11 = FUN_00011384(plVar4);
+        *(int *)(param_2 + 0x30) = (int)uVar11;
+        if ((int)uVar11 < 0) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000009a;
+        }
+        else {
+          *(undefined8 *)(param_2 + 0x38) = 0x30;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002044) {
+      if (uVar8 == 0x30) {
+        if (plVar4[1] == 0) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          MmUnmapIoSpace(plVar4[1],(int)plVar4[2]);
+          if (((*(uint *)((longlong)plVar4 + 0x2c) < 0x100) &&
+              (uVar10 = (ulonglong)*(uint *)((longlong)plVar4 + 0x2c),
+              (&DAT_00014370)[uVar10] == plVar4[1])) &&
+             (*(int *)(&DAT_00014b70 + uVar10 * 4) == (int)plVar4[2])) {
+            (&DAT_00014370)[uVar10] = 0;
+            *(undefined4 *)(&DAT_00014b70 + uVar10 * 4) = 0;
+          }
+          *(undefined4 *)(param_2 + 0x30) = 0;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002048) {
+      if (uVar8 == 0x30) {
+        lVar5 = plVar4[1];
+        if (((lVar5 != 0) && (*(uint *)((longlong)plVar4 + 0x2c) < 0x100)) &&
+           ((&DAT_00014370)[*(uint *)((longlong)plVar4 + 0x2c)] == lVar5)) {
+          iVar2 = (int)plVar4[3];
+          uVar10 = (ulonglong)*(uint *)((longlong)plVar4 + 0x14);
+          if (*(uint *)((longlong)plVar4 + 0x14) + iVar2 <=
+              *(uint *)(&DAT_00014b70 + (ulonglong)*(uint *)((longlong)plVar4 + 0x2c) * 4)) {
+            if (iVar2 == 1) {
+              *(uint *)((longlong)plVar4 + 0x1c) = (uint)*(byte *)(uVar10 + lVar5);
+            }
+            else if (iVar2 == 2) {
+              *(uint *)((longlong)plVar4 + 0x1c) = (uint)*(ushort *)(uVar10 + lVar5);
+            }
+            else if (iVar2 == 4) {
+              *(undefined4 *)((longlong)plVar4 + 0x1c) = *(undefined4 *)(uVar10 + lVar5);
+            }
+            *(undefined4 *)(param_2 + 0x30) = 0;
+            *(undefined8 *)(param_2 + 0x38) = 0x30;
+            goto LAB_00011b0a;
+          }
+        }
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x8000204c) {
+      if (uVar8 == 0x30) {
+        lVar5 = plVar4[1];
+        if (((lVar5 != 0) && (*(uint *)((longlong)plVar4 + 0x2c) < 0x100)) &&
+           ((&DAT_00014370)[*(uint *)((longlong)plVar4 + 0x2c)] == lVar5)) {
+          iVar2 = (int)plVar4[3];
+          uVar10 = (ulonglong)*(uint *)((longlong)plVar4 + 0x14);
+          if (*(uint *)((longlong)plVar4 + 0x14) + iVar2 <=
+              *(uint *)(&DAT_00014b70 + (ulonglong)*(uint *)((longlong)plVar4 + 0x2c) * 4)) {
+            if (iVar2 == 1) {
+              *(undefined1 *)(uVar10 + lVar5) = *(undefined1 *)((longlong)plVar4 + 0x1c);
+            }
+            else if (iVar2 == 2) {
+              *(undefined2 *)(uVar10 + lVar5) = *(undefined2 *)((longlong)plVar4 + 0x1c);
+            }
+            else if (iVar2 == 4) {
+              *(undefined4 *)(uVar10 + lVar5) = *(undefined4 *)((longlong)plVar4 + 0x1c);
+            }
+            *(undefined4 *)(param_2 + 0x30) = 0;
+            *(undefined8 *)(param_2 + 0x38) = 0x30;
+            goto LAB_00011b0a;
+          }
+        }
+        *(undefined4 *)(param_2 + 0x30) = 0xc000009a;
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002050) {
+      if (uVar8 == 0x18) {
+        uVar8 = *(uint *)(plVar4 + 2);
+        if ((uVar8 == 0) || (4 < uVar8)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          HalGetBusDataByOffset
+                    (4,(int)*plVar4,
+                     (*(uint *)(plVar4 + 1) & 7) << 5 | *(uint *)((longlong)plVar4 + 4) & 0x1f,
+                     (longlong)plVar4 + 0x14,*(undefined4 *)((longlong)plVar4 + 0xc),uVar8);
+          *(undefined4 *)(param_2 + 0x30) = 0;
+          *(undefined8 *)(param_2 + 0x38) = 0x18;
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+    if (uVar1 == 0x80002054) {
+      if (uVar8 == 0x18) {
+        uVar8 = *(uint *)(plVar4 + 2);
+        if ((uVar8 == 0) || (4 < uVar8)) {
+          *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+        }
+        else {
+          uVar1 = *(uint *)((longlong)plVar4 + 0xc);
+          if ((uVar1 < 0x10) || (0x27 < uVar1)) {
+            HalSetBusDataByOffset
+                      (4,(int)*plVar4,
+                       (*(uint *)(plVar4 + 1) & 7) << 5 | *(uint *)((longlong)plVar4 + 4) & 0x1f,
+                       (longlong)plVar4 + 0x14,uVar1,uVar8);
+            *(undefined4 *)(param_2 + 0x30) = 0;
+            *(undefined8 *)(param_2 + 0x38) = 0x18;
+          }
+          else {
+            *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+          }
+        }
+      }
+      else {
+        *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+      }
+      goto LAB_00011b0a;
+    }
+  }
+  *(undefined4 *)(param_2 + 0x30) = 0xc000000d;
+LAB_00011b0a:
+  uVar9 = *(undefined4 *)(param_2 + 0x30);
+  IofCompleteRequest(param_2,0);
+  return uVar9;
+}
+
+
+----- FUNCTION FUN_00011b30 @ 00011b30 -----
+
+undefined8 FUN_00011b30(longlong param_1)
+
+{
+  undefined8 uVar1;
+  undefined1 local_res18 [16];
+  undefined1 local_38 [16];
+  undefined1 local_28 [16];
+  undefined1 local_18 [16];
+  
+  RtlInitUnicodeString(local_38,u__Device_RTCore64_00014310);
+  RtlInitUnicodeString(local_18,u__DosDevices_RTCore64_000142e0);
+  RtlInitUnicodeString(local_28);
+  uVar1 = WdmlibIoCreateDeviceSecure(param_1,0,local_38,0x22,0x100,0,local_28,0,local_res18);
+  if (-1 < (int)uVar1) {
+    uVar1 = IoCreateSymbolicLink(local_18,local_38);
+    if (-1 < (int)uVar1) {
+      *(code **)(param_1 + 0x70) = FUN_00011438;
+      *(code **)(param_1 + 0x80) = FUN_00011438;
+      *(code **)(param_1 + 0xe0) = FUN_00011438;
+      *(code **)(param_1 + 0x68) = FUN_00011008;
+      uVar1 = 0;
+    }
+  }
+  return uVar1;
+}
+
+
+----- FUNCTION FUN_00011c10 @ 00011c10 -----
+
+void FUN_00011c10(longlong param_1)
+
+{
+  if ((param_1 == DAT_00014100) && ((short)((ulonglong)param_1 >> 0x30) == 0)) {
+    return;
+  }
+  FUN_00011c38(param_1);
+  return;
+}
+
+
+----- FUNCTION FUN_00011c38 @ 00011c38 -----
+
+void FUN_00011c38(undefined8 param_1)
+
+{
+                    /* WARNING: Subroutine does not return */
+  KeBugCheckEx(0xf7,param_1,DAT_00014100,DAT_00014108,0);
+}
+
+
+----- FUNCTION WdmlibRtlInitUnicodeStringEx @ 00011c68 -----
+
+/* Library Function - Single Match
+    WdmlibRtlInitUnicodeStringEx
+   
+   Library: Visual Studio 2019 Release */
+
+undefined8 WdmlibRtlInitUnicodeStringEx(short *param_1,short *param_2)
+
+{
+  short sVar1;
+  ulonglong uVar2;
+  short *psVar3;
+  
+  if (param_2 == (short *)0x0) {
+    *param_1 = 0;
+    param_1[1] = 0;
+    param_1[4] = 0;
+    param_1[5] = 0;
+    param_1[6] = 0;
+    param_1[7] = 0;
+  }
+  else {
+    uVar2 = 0xffffffffffffffff;
+    psVar3 = param_2;
+    do {
+      if (uVar2 == 0) break;
+      uVar2 = uVar2 - 1;
+      sVar1 = *psVar3;
+      psVar3 = psVar3 + 1;
+    } while (sVar1 != 0);
+    if (0x7ffe < ~uVar2 - 1) {
+      return 0xc0000106;
+    }
+    sVar1 = (short)(~uVar2 - 1) * 2;
+    *(short **)(param_1 + 4) = param_2;
+    *param_1 = sVar1;
+    param_1[1] = sVar1 + 2;
+  }
+  return 0;
+}
+
+
+----- FUNCTION _snwprintf @ 00011cc8 -----
+
+int __cdecl _snwprintf(wchar_t *_Dest,size_t _Count,wchar_t *_Format,...)
+
+{
+  int iVar1;
+  
+                    /* WARNING: Could not recover jumptable at 0x00011cc8. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  iVar1 = _snwprintf(_Dest,_Count,_Format);
+  return iVar1;
+}
+
+
+----- FUNCTION __GSHandlerCheckCommon @ 00011cd4 -----
+
+/* Library Function - Single Match
+    __GSHandlerCheckCommon
+   
+   Libraries: Visual Studio 2008 Release, Visual Studio 2010 Release, Visual Studio 2012 Release,
+   Visual Studio 2019 Release */
+
+void __GSHandlerCheckCommon(ulonglong param_1,longlong param_2,uint *param_3)
+
+{
+  longlong lVar1;
+  ulonglong uVar2;
+  
+  uVar2 = param_1;
+  if ((*param_3 & 4) != 0) {
+    uVar2 = (longlong)(int)param_3[1] + param_1 & (longlong)(int)-param_3[2];
+  }
+  lVar1 = (ulonglong)*(uint *)(*(longlong *)(param_2 + 0x10) + 8) + *(longlong *)(param_2 + 8);
+  if ((*(byte *)(lVar1 + 3) & 0xf) != 0) {
+    param_1 = param_1 + (longlong)(int)(*(byte *)(lVar1 + 3) & 0xfffffff0);
+  }
+  FUN_00011c10(param_1 ^ *(ulonglong *)((longlong)(int)(*param_3 & 0xfffffff8) + uVar2));
+  return;
+}
+
+
+----- FUNCTION __GSHandlerCheck @ 00011d40 -----
+
+/* Library Function - Single Match
+    __GSHandlerCheck
+   
+   Libraries: Visual Studio 2008 Release, Visual Studio 2010 Release, Visual Studio 2012 Release,
+   Visual Studio 2019 Release */
+
+undefined8
+__GSHandlerCheck(undefined8 param_1,ulonglong param_2,undefined8 param_3,longlong param_4)
+
+{
+  __GSHandlerCheckCommon(param_2,param_4,*(uint **)(param_4 + 0x38));
+  return 1;
+}
+
+
+----- FUNCTION wcschr @ 00011d64 -----
+
+wchar_t * __cdecl wcschr(wchar_t *_Str,wchar_t _Ch)
+
+{
+  wchar_t *pwVar1;
+  
+                    /* WARNING: Could not recover jumptable at 0x00011d64. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  pwVar1 = wcschr(_Str,_Ch);
+  return pwVar1;
+}
+
+
+----- FUNCTION _wcsnicmp @ 00011d70 -----
+
+int __cdecl _wcsnicmp(wchar_t *_Str1,wchar_t *_Str2,size_t _MaxCount)
+
+{
+  int iVar1;
+  
+                    /* WARNING: Could not recover jumptable at 0x00011d70. Too many branches */
+                    /* WARNING: Treating indirect jump as call */
+  iVar1 = _wcsnicmp(_Str1,_Str2,_MaxCount);
+  return iVar1;
+}
+
+
+----- FUNCTION FUN_00011d90 @ 00011d90 -----
+
+void FUN_00011d90(ulonglong *param_1,ulonglong param_2,ulonglong param_3)
+
+{
+  uint uVar1;
+  ulonglong *puVar2;
+  ulonglong uVar3;
+  ulonglong uVar4;
+  
+  uVar3 = param_3;
+  if (7 < param_3) {
+    param_2 = (param_2 & 0xff) * 0x101010101010101;
+    if (0x3f < param_3) {
+      uVar1 = -(int)param_1 & 7;
+      if (uVar1 != 0) {
+        uVar3 = param_3 - uVar1;
+        *param_1 = param_2;
+      }
+      param_1 = (ulonglong *)((ulonglong)uVar1 + (longlong)param_1);
+      param_3 = uVar3 & 0x3f;
+      uVar3 = uVar3 >> 6;
+      if (uVar3 != 0) {
+        puVar2 = param_1;
+        if (uVar3 < 0x1c00) {
+          do {
+            *puVar2 = param_2;
+            puVar2[1] = param_2;
+            puVar2[2] = param_2;
+            param_1 = puVar2 + 8;
+            puVar2[3] = param_2;
+            puVar2[4] = param_2;
+            uVar3 = uVar3 - 1;
+            puVar2[5] = param_2;
+            puVar2[6] = param_2;
+            puVar2[7] = param_2;
+            puVar2 = param_1;
+          } while (uVar3 != 0);
+        }
+        else {
+          do {
+            *puVar2 = param_2;
+            puVar2[1] = param_2;
+            puVar2[2] = param_2;
+            param_1 = puVar2 + 8;
+            puVar2[3] = param_2;
+            puVar2[4] = param_2;
+            uVar3 = uVar3 - 1;
+            puVar2[5] = param_2;
+            puVar2[6] = param_2;
+            puVar2[7] = param_2;
+            puVar2 = param_1;
+          } while (uVar3 != 0);
+          LOCK();
+          UNLOCK();
+        }
+      }
+    }
+    uVar3 = param_3 & 7;
+    for (uVar4 = param_3 >> 3; uVar4 != 0; uVar4 = uVar4 - 1) {
+      *param_1 = param_2;
+      param_1 = param_1 + 1;
+    }
+  }
+  for (; uVar3 != 0; uVar3 = uVar3 - 1) {
+    *(char *)param_1 = (char)param_2;
+    param_1 = (ulonglong *)((longlong)param_1 + 1);
+  }
+  return;
+}
+
+
+----- FUNCTION memcpy @ 00011e90 -----
+
+/* Library Function - Single Match
+    memcpy
+   
+   Library: Visual Studio 2019 Release */
+
+void * __cdecl memcpy(void *_Dst,void *_Src,size_t _Size)
+
+{
+  undefined8 uVar1;
+  int iVar2;
+  undefined8 *puVar3;
+  undefined8 *puVar4;
+  ulonglong uVar5;
+  ulonglong uVar6;
+  
+  uVar5 = (longlong)_Src - (longlong)_Dst;
+  if (_Src < _Dst) {
+    puVar4 = (undefined8 *)((longlong)_Dst + _Size);
+    puVar3 = puVar4;
+    if (_Size < 8) goto LAB_000120a4;
+    if (((ulonglong)puVar4 & 7) != 0) {
+      if (((ulonglong)puVar4 & 1) != 0) {
+        puVar4 = (undefined8 *)((longlong)puVar4 + -1);
+        _Size = _Size - 1;
+        *(undefined1 *)puVar4 = *(undefined1 *)(uVar5 + (longlong)puVar4);
+      }
+      if (((ulonglong)puVar4 & 2) != 0) {
+        puVar4 = (undefined8 *)((longlong)puVar4 + -2);
+        _Size = _Size - 2;
+        *(undefined2 *)puVar4 = *(undefined2 *)(uVar5 + (longlong)puVar4);
+      }
+      if (((ulonglong)puVar4 & 4) != 0) {
+        puVar4 = (undefined8 *)((longlong)puVar4 + -4);
+        _Size = _Size - 4;
+        *(undefined4 *)puVar4 = *(undefined4 *)(uVar5 + (longlong)puVar4);
+      }
+    }
+    while (uVar6 = _Size >> 5, puVar3 = puVar4, uVar6 != 0) {
+      if ((uVar6 < 0x2000) || (0xfffffffffffff000 < uVar5)) goto LAB_000120e0;
+      do {
+        iVar2 = 0x20;
+        do {
+          puVar3 = puVar4;
+          iVar2 = iVar2 + -1;
+          puVar4 = puVar3 + -0x10;
+        } while (iVar2 != 0);
+        iVar2 = 0x40;
+        puVar3 = puVar3 + 0x1f0;
+        do {
+          uVar1 = *(undefined8 *)((uVar5 - 0x10) + (longlong)puVar3);
+          puVar3[-1] = *(undefined8 *)((uVar5 - 8) + (longlong)puVar3);
+          puVar3[-2] = uVar1;
+          uVar1 = *(undefined8 *)((uVar5 - 0x20) + (longlong)puVar3);
+          puVar3[-3] = *(undefined8 *)((uVar5 - 0x18) + (longlong)puVar3);
+          puVar3[-4] = uVar1;
+          uVar1 = *(undefined8 *)((uVar5 - 0x30) + (longlong)puVar3);
+          puVar4 = puVar3 + -8;
+          puVar3[-5] = *(undefined8 *)((uVar5 - 0x28) + (longlong)puVar3);
+          puVar3[-6] = uVar1;
+          uVar1 = *(undefined8 *)(uVar5 + (longlong)puVar4);
+          iVar2 = iVar2 + -1;
+          puVar3[-7] = *(undefined8 *)(uVar5 + 8 + (longlong)puVar4);
+          *puVar4 = uVar1;
+          puVar3 = puVar4;
+        } while (iVar2 != 0);
+        _Size = _Size - 0x1000;
+      } while (0xfff < _Size);
+      LOCK();
+      UNLOCK();
+    }
+    goto LAB_00012087;
+  }
+  puVar4 = _Dst;
+  if (_Size < 8) goto LAB_00011f04;
+  puVar3 = _Dst;
+  if (((ulonglong)_Dst & 7) != 0) {
+    if (((ulonglong)_Dst & 1) != 0) {
+      _Size = _Size - 1;
+      *(undefined1 *)_Dst = *(undefined1 *)(uVar5 + (longlong)_Dst);
+      puVar3 = (undefined8 *)((longlong)_Dst + 1);
+    }
+    if (((ulonglong)puVar3 & 2) != 0) {
+      _Size = _Size - 2;
+      *(undefined2 *)puVar3 = *(undefined2 *)(uVar5 + (longlong)puVar3);
+      puVar3 = (undefined8 *)((longlong)puVar3 + 2);
+    }
+    if (((ulonglong)puVar3 & 4) != 0) {
+      _Size = _Size - 4;
+      *(undefined4 *)puVar3 = *(undefined4 *)(uVar5 + (longlong)puVar3);
+      puVar3 = (undefined8 *)((longlong)puVar3 + 4);
+    }
+  }
+  while (uVar6 = _Size >> 5, puVar4 = puVar3, uVar6 != 0) {
+    if ((uVar6 < 0x2000) || (uVar5 < 0x1000)) goto LAB_00011f40;
+    do {
+      iVar2 = 0x20;
+      do {
+        puVar4 = puVar3;
+        iVar2 = iVar2 + -1;
+        puVar3 = puVar4 + 0x10;
+      } while (iVar2 != 0);
+      iVar2 = 0x40;
+      puVar4 = puVar4 + -0x1f0;
+      do {
+        uVar1 = *(undefined8 *)(uVar5 + 8 + (longlong)puVar4);
+        *puVar4 = *(undefined8 *)(uVar5 + (longlong)puVar4);
+        puVar4[1] = uVar1;
+        uVar1 = *(undefined8 *)(uVar5 + 0x18 + (longlong)puVar4);
+        puVar4[2] = *(undefined8 *)(uVar5 + 0x10 + (longlong)puVar4);
+        puVar4[3] = uVar1;
+        uVar1 = *(undefined8 *)(uVar5 + 0x28 + (longlong)puVar4);
+        puVar3 = puVar4 + 8;
+        puVar4[4] = *(undefined8 *)(uVar5 + 0x20 + (longlong)puVar4);
+        puVar4[5] = uVar1;
+        uVar1 = *(undefined8 *)((uVar5 - 8) + (longlong)puVar3);
+        iVar2 = iVar2 + -1;
+        puVar4[6] = *(undefined8 *)((uVar5 - 0x10) + (longlong)puVar3);
+        puVar4[7] = uVar1;
+        puVar4 = puVar3;
+      } while (iVar2 != 0);
+      _Size = _Size - 0x1000;
+    } while (0xfff < _Size);
+    LOCK();
+    UNLOCK();
+  }
+  goto LAB_00011ee7;
+LAB_000120e0:
+  do {
+    uVar1 = *(undefined8 *)((uVar5 - 0x10) + (longlong)puVar4);
+    puVar3 = puVar4 + -4;
+    puVar4[-1] = *(undefined8 *)((uVar5 - 8) + (longlong)puVar4);
+    puVar4[-2] = uVar1;
+    uVar1 = *(undefined8 *)(uVar5 + (longlong)puVar3);
+    uVar6 = uVar6 - 1;
+    puVar4[-3] = *(undefined8 *)(uVar5 + 8 + (longlong)puVar3);
+    *puVar3 = uVar1;
+    puVar4 = puVar3;
+  } while (uVar6 != 0);
+  _Size = _Size & 0x1f;
+LAB_00012087:
+  uVar6 = _Size >> 3;
+  if (uVar6 != 0) {
+    do {
+      puVar3 = puVar3 + -1;
+      uVar6 = uVar6 - 1;
+      *puVar3 = *(undefined8 *)(uVar5 + (longlong)puVar3);
+    } while (uVar6 != 0);
+    _Size = _Size & 7;
+  }
+LAB_000120a4:
+  if (_Size == 0) {
+    return _Dst;
+  }
+  do {
+    puVar3 = (undefined8 *)((longlong)puVar3 + -1);
+    _Size = _Size - 1;
+    *(undefined1 *)puVar3 = *(undefined1 *)(uVar5 + (longlong)puVar3);
+  } while (_Size != 0);
+  return _Dst;
+LAB_00011f40:
+  do {
+    uVar1 = *(undefined8 *)(uVar5 + 8 + (longlong)puVar3);
+    puVar4 = puVar3 + 4;
+    *puVar3 = *(undefined8 *)(uVar5 + (longlong)puVar3);
+    puVar3[1] = uVar1;
+    uVar1 = *(undefined8 *)((uVar5 - 8) + (longlong)puVar4);
+    uVar6 = uVar6 - 1;
+    puVar3[2] = *(undefined8 *)((uVar5 - 0x10) + (longlong)puVar4);
+    puVar3[3] = uVar1;
+    puVar3 = puVar4;
+  } while (uVar6 != 0);
+  _Size = _Size & 0x1f;
+LAB_00011ee7:
+  uVar6 = _Size >> 3;
+  if (uVar6 != 0) {
+    do {
+      *puVar4 = *(undefined8 *)(uVar5 + (longlong)puVar4);
+      puVar4 = puVar4 + 1;
+      uVar6 = uVar6 - 1;
+    } while (uVar6 != 0);
+    _Size = _Size & 7;
+  }
+LAB_00011f04:
+  if (_Size == 0) {
+    return _Dst;
+  }
+  do {
+    *(undefined1 *)puVar4 = *(undefined1 *)(uVar5 + (longlong)puVar4);
+    puVar4 = (undefined8 *)((longlong)puVar4 + 1);
+    _Size = _Size - 1;
+  } while (_Size != 0);
+  return _Dst;
+}
+
+
+----- FUNCTION WdmlibInit @ 00016008 -----
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+/* Library Function - Single Match
+    WdmlibInit
+   
+   Library: Visual Studio 2019 Release */
+
+void WdmlibInit(void)
+
+{
+  undefined1 local_18 [24];
+  
+  RtlInitUnicodeString(local_18,L"IoCreateDeviceSecure");
+  DAT_00014348 = (code *)MmGetSystemRoutineAddress(local_18);
+  if (DAT_00014348 == (code *)0x0) {
+    DAT_00014348 = IoDevObjCreateDeviceSecure;
+  }
+  RtlInitUnicodeString(local_18,L"IoValidateDeviceIoControlAccess");
+  _DAT_00014350 = MmGetSystemRoutineAddress(local_18);
+  DAT_00014340 = 1;
+  return;
+}
+
+
+----- FUNCTION WdmlibIoCreateDeviceSecure @ 00016074 -----
+
+/* Library Function - Single Match
+    WdmlibIoCreateDeviceSecure
+   
+   Library: Visual Studio 2019 Release */
+
+void WdmlibIoCreateDeviceSecure
+               (undefined8 param_1,undefined4 param_2,undefined8 param_3,undefined4 param_4,
+               undefined4 param_5,undefined1 param_6,undefined8 param_7,undefined8 param_8,
+               undefined8 param_9)
+
+{
+  if (DAT_00014340 == '\0') {
+    WdmlibInit();
+  }
+  (*DAT_00014348)(param_1,param_2,param_3,param_4,param_5,param_6,param_7,param_8,param_9);
+  return;
+}
+
+
+----- FUNCTION IopDevObjApplyPostCreationSettings @ 0001610c -----
+
+/* Library Function - Single Match
+    IopDevObjApplyPostCreationSettings
+   
+   Library: Visual Studio 2019 Release */
+
+ulonglong IopDevObjApplyPostCreationSettings(undefined8 param_1,byte *param_2)
+
+{
+  uint uVar1;
+  ulonglong uVar2;
+  undefined1 local_res10 [8];
+  uint local_res18 [2];
+  uint local_res20 [2];
+  undefined8 local_18 [2];
+  
+  if ((*param_2 & 2) == 0) {
+    uVar2 = 0;
+  }
+  else {
+    uVar2 = SeUtilSecurityInfoFromSecurityDescriptor
+                      (*(undefined8 *)(param_2 + 8),local_res10,local_res18);
+    if (-1 < (int)uVar2) {
+      SeSetSecurityAccessMask((byte)local_res18[0],local_res20);
+      uVar2 = ObOpenObjectByPointer
+                        (param_1,0x200,0,local_res20[0],*(undefined8 *)IoDeviceObjectType_exref,0,
+                         local_18);
+      if (-1 < (int)uVar2) {
+        uVar1 = ZwSetSecurityObject(local_18[0],local_res18[0],*(undefined8 *)(param_2 + 8));
+        uVar2 = (ulonglong)uVar1;
+        ZwClose(local_18[0]);
+      }
+    }
+  }
+  return uVar2;
+}
+
+
+----- FUNCTION IoDevObjCreateDeviceSecure @ 000161b8 -----
+
+/* Library Function - Single Match
+    IoDevObjCreateDeviceSecure
+   
+   Library: Visual Studio 2019 Release */
+
+ulonglong IoDevObjCreateDeviceSecure
+                    (longlong param_1,undefined4 param_2,longlong param_3,undefined4 param_4,
+                    undefined4 param_5,undefined1 param_6,ushort *param_7,longlong param_8,
+                    undefined8 *param_9)
+
+{
+  undefined8 *puVar1;
+  uint uVar2;
+  ulonglong uVar3;
+  ulonglong uVar4;
+  longlong local_res18 [2];
+  uint local_58;
+  undefined4 local_54;
+  undefined4 local_48;
+  undefined1 local_44;
+  undefined4 local_40 [6];
+  
+  puVar1 = param_9;
+  param_9 = (undefined8 *)0x0;
+  *puVar1 = 0;
+  if ((param_3 == 0) && (-1 < (char)param_5)) {
+    return 0xc000000d;
+  }
+  if (param_8 == 0) {
+    PpRegStateInitEmptyCreationSettings(&local_58);
+  }
+  else {
+    uVar3 = PpRegStateReadCreateClassCreationSettings(param_8,param_1,&local_58);
+    if ((int)uVar3 < 0) {
+      return uVar3;
+    }
+  }
+  if ((local_58 & 2) == 0) {
+    uVar3 = SeSddlSecurityDescriptorFromSDDL(param_7,1,local_res18);
+    uVar4 = uVar3 & 0xffffffff;
+    if ((int)uVar3 < 0) goto LAB_00016341;
+    FUN_00016370(local_res18[0],&local_58);
+    if (param_8 != 0) {
+      PpRegStateInitEmptyCreationSettings(local_40);
+      FUN_00016370(local_res18[0],local_40);
+      uVar3 = PpRegStateUpdateStackCreationSettings(param_8,(longlong)local_40);
+      uVar4 = uVar3 & 0xffffffff;
+      if ((int)uVar3 < 0) goto LAB_00016341;
+    }
+  }
+  if ((local_58 & 1) != 0) {
+    param_4 = local_54;
+  }
+  if ((local_58 & 4) != 0) {
+    param_5 = local_48;
+  }
+  if ((local_58 & 8) != 0) {
+    param_6 = local_44;
+  }
+  uVar2 = IoCreateDevice(param_1,param_2,param_3,param_4,param_5,param_6,&param_9);
+  uVar4 = (ulonglong)uVar2;
+  if (-1 < (int)uVar2) {
+    uVar3 = IopDevObjApplyPostCreationSettings(param_9,(byte *)&local_58);
+    uVar4 = uVar3 & 0xffffffff;
+    if ((int)uVar3 < 0) {
+      IoDeleteDevice(param_9);
+    }
+    else {
+      *puVar1 = param_9;
+    }
+  }
+LAB_00016341:
+  PpRegStateFreeStackCreationSettings((byte *)&local_58);
+  return uVar4;
+}
+
+
+----- FUNCTION FUN_00016370 @ 00016370 -----
+
+void FUN_00016370(undefined8 param_1,undefined4 *param_2)
+
+{
+  *param_2 = 2;
+  *(undefined8 *)(param_2 + 2) = param_1;
+  return;
+}
+
+
+----- FUNCTION PpRegStateFreeStackCreationSettings @ 00016384 -----
+
+/* Library Function - Single Match
+    PpRegStateFreeStackCreationSettings
+   
+   Library: Visual Studio 2019 Release */
+
+void PpRegStateFreeStackCreationSettings(byte *param_1)
+
+{
+  if ((*param_1 & 2) != 0) {
+    ExFreePoolWithTag(*(undefined8 *)(param_1 + 8),0);
+  }
+  return;
+}
+
+
+----- FUNCTION PiRegStateOpenClassKey @ 000163a4 -----
+
+/* Library Function - Single Match
+    PiRegStateOpenClassKey
+   
+   Library: Visual Studio 2019 Release */
+
+void PiRegStateOpenClassKey
+               (undefined8 param_1,undefined4 param_2,int param_3,undefined4 *param_4,
+               undefined8 *param_5)
+
+{
+  int iVar1;
+  undefined1 auStackY_128 [32];
+  undefined4 local_b8 [2];
+  undefined8 local_b0;
+  undefined8 local_a8 [2];
+  wchar_t local_98 [38];
+  undefined2 local_4c;
+  ulonglong local_48;
+  
+  local_48 = DAT_00014100 ^ (ulonglong)auStackY_128;
+  *param_5 = 0;
+  if (param_4 != (undefined4 *)0x0) {
+    *param_4 = 0;
+  }
+  iVar1 = CmRegUtilOpenExistingWstrKey
+                    (0,L"\\Registry\\Machine\\System\\CurrentControlSet\\Control\\Class",0x20019,
+                     &local_b0);
+  if (-1 < iVar1) {
+    _snwprintf(local_98,0x27,L"{%08X-%04X-%04X-%02X%02X-%02X%02X%02X%02X%02X%02X}");
+    local_4c = 0;
+    if (param_3 == 0) {
+      iVar1 = CmRegUtilOpenExistingWstrKey(local_b0,local_98,param_2,local_a8);
+      local_b8[0] = 2;
+    }
+    else {
+      iVar1 = CmRegUtilCreateWstrKey(local_b0,local_98,param_2,0,0,local_b8,local_a8);
+    }
+    ZwClose(local_b0);
+    if ((-1 < iVar1) && (*param_5 = local_a8[0], param_4 != (undefined4 *)0x0)) {
+      *param_4 = local_b8[0];
+    }
+  }
+  FUN_00011c10(local_48 ^ (ulonglong)auStackY_128);
+  return;
+}
+
+
+----- FUNCTION PpRegStateInitEmptyCreationSettings @ 00016540 -----
+
+/* Library Function - Single Match
+    PpRegStateInitEmptyCreationSettings
+   
+   Library: Visual Studio 2019 Release */
+
+void PpRegStateInitEmptyCreationSettings(undefined4 *param_1)
+
+{
+  *param_1 = 0;
+  *(undefined8 *)(param_1 + 2) = 0;
+  param_1[1] = 0;
+  param_1[4] = 0;
+  param_1[5] = 0;
+  return;
+}
+
+
+----- FUNCTION PiRegStateReadStackCreationSettingsFromKey @ 00016558 -----
+
+/* Library Function - Single Match
+    PiRegStateReadStackCreationSettingsFromKey
+   
+   Library: Visual Studio 2019 Release */
+
+ulonglong PiRegStateReadStackCreationSettingsFromKey(undefined8 param_1,uint *param_2)
+
+{
+  uint uVar1;
+  ulonglong uVar2;
+  ulonglong uVar3;
+  char local_res10 [8];
+  uint local_res18 [2];
+  longlong local_res20;
+  longlong local_48 [2];
+  
+  *param_2 = 0;
+  param_2[2] = 0;
+  param_2[3] = 0;
+  param_2[1] = 0;
+  param_2[4] = 0;
+  param_2[5] = 0;
+  local_48[0] = 0;
+  uVar1 = CmRegUtilWstrValueGetFullBuffer(param_1,L"Security",3,0,local_48);
+  uVar3 = (ulonglong)uVar1;
+  if ((int)uVar1 < 0) {
+    if (uVar1 == 0xc0000034) {
+      local_res20 = 0;
+      uVar3 = 0;
+    }
+  }
+  else {
+    uVar1 = SeCaptureSecurityDescriptor
+                      ((ulonglong)*(uint *)(local_48[0] + 8) + local_48[0],0,1,1,&local_res20);
+    uVar3 = (ulonglong)uVar1;
+  }
+  if (local_48[0] != 0) {
+    ExFreePoolWithTag(local_48[0],0);
+  }
+  if (-1 < (int)uVar3) {
+    if (local_res20 != 0) {
+      uVar2 = SeUtilSecurityInfoFromSecurityDescriptor(local_res20,local_res10,local_res18);
+      uVar3 = uVar2 & 0xffffffff;
+      if ((int)uVar2 < 0) goto LAB_000166de;
+      if (local_res10[0] == '\0') {
+        *param_2 = *param_2 | 2;
+        *(longlong *)(param_2 + 2) = local_res20;
+      }
+      else {
+        ExFreePoolWithTag(local_res20,0);
+      }
+    }
+    uVar1 = CmRegUtilWstrValueGetDword(param_1,L"DeviceType",0,param_2 + 1);
+    uVar3 = (ulonglong)uVar1;
+    if ((int)uVar1 < 0) {
+      if (uVar1 != 0xc0000034) goto LAB_000166de;
+    }
+    else {
+      *param_2 = *param_2 | 1;
+    }
+    uVar1 = CmRegUtilWstrValueGetDword(param_1,L"DeviceCharacteristics",0,param_2 + 4);
+    uVar3 = (ulonglong)uVar1;
+    if ((int)uVar1 < 0) {
+      if (uVar1 != 0xc0000034) goto LAB_000166de;
+    }
+    else {
+      *param_2 = *param_2 | 4;
+    }
+    uVar1 = CmRegUtilWstrValueGetDword(param_1,L"Exclusive",0,param_2 + 5);
+    uVar3 = (ulonglong)uVar1;
+    if (-1 < (int)uVar1) {
+      *param_2 = *param_2 | 8;
+      return uVar3;
+    }
+    if (uVar1 == 0xc0000034) {
+      return 0;
+    }
+  }
+LAB_000166de:
+  if (*(longlong *)(param_2 + 2) != 0) {
+    ExFreePoolWithTag(*(longlong *)(param_2 + 2),0);
+  }
+  *param_2 = 0;
+  param_2[2] = 0;
+  param_2[3] = 0;
+  param_2[1] = 0;
+  param_2[4] = 0;
+  param_2[5] = 0;
+  return uVar3;
+}
+
+
+----- FUNCTION PpRegStateReadCreateClassCreationSettings @ 00016724 -----
+
+/* Library Function - Single Match
+    PpRegStateReadCreateClassCreationSettings
+   
+   Library: Visual Studio 2019 Release */
+
+ulonglong PpRegStateReadCreateClassCreationSettings
+                    (undefined8 param_1,longlong param_2,uint *param_3)
+
+{
+  uint uVar1;
+  ulonglong uVar2;
+  undefined8 uVar3;
+  ushort *puVar4;
+  int local_res18 [2];
+  undefined8 local_res20;
+  undefined8 local_18 [2];
+  
+  *param_3 = 0;
+  param_3[2] = 0;
+  param_3[3] = 0;
+  param_3[1] = 0;
+  param_3[4] = 0;
+  param_3[5] = 0;
+  local_res20 = 0;
+  local_18[0] = 0;
+  uVar2 = PiRegStateOpenClassKey(param_1,0xf003f,1,local_res18,&local_res20);
+  uVar3 = local_res20;
+  if (-1 < (int)uVar2) {
+    if (local_res18[0] == 2) {
+      uVar1 = CmRegUtilOpenExistingWstrKey(local_res20,L"Properties",0x20019,local_18);
+      ZwClose(local_res20);
+      if ((int)uVar1 < 0) {
+        if (uVar1 != 0xc0000034) {
+          return (ulonglong)uVar1;
+        }
+        return 0;
+      }
+      uVar2 = PiRegStateReadStackCreationSettingsFromKey(local_18[0],param_3);
+      uVar2 = uVar2 & 0xffffffff;
+      uVar3 = local_18[0];
+    }
+    else {
+      puVar4 = (ushort *)(*(longlong *)(param_2 + 0x30) + 0x18);
+      if (puVar4 == (ushort *)0x0) {
+        uVar2 = 0xc000009a;
+      }
+      else {
+        uVar1 = CmRegUtilWstrValueSetUcString(local_res20,L"Class",puVar4);
+        uVar2 = (ulonglong)uVar1;
+        if (-1 < (int)uVar1) {
+          local_res18[0] = 0x31;
+          uVar1 = CmRegUtilWstrValueSetWstrString(uVar3,L"NoDisplayClass",(short *)local_res18);
+          uVar2 = (ulonglong)uVar1;
+          if (-1 < (int)uVar1) {
+            uVar1 = CmRegUtilWstrValueSetWstrString(uVar3,L"NoUseClass",(short *)local_res18);
+            uVar2 = (ulonglong)uVar1;
+          }
+        }
+      }
+    }
+    ZwClose(uVar3);
+  }
+  return uVar2;
+}
+
+
+----- FUNCTION PpRegStateUpdateStackCreationSettings @ 00016854 -----
+
+/* Library Function - Single Match
+    PpRegStateUpdateStackCreationSettings
+   
+   Library: Visual Studio 2019 Release */
+
+ulonglong PpRegStateUpdateStackCreationSettings(undefined8 param_1,longlong param_2)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined4 uVar3;
+  ulonglong uVar4;
+  undefined *local_res18;
+  undefined8 local_res20;
+  undefined8 local_18 [2];
+  
+  uVar4 = PiRegStateOpenClassKey(param_1,0xf003f,0,(undefined4 *)0x0,&local_res20);
+  if (-1 < (int)uVar4) {
+    if (DAT_00014358 == 0) {
+      iVar1 = SeCaptureSecurityDescriptor(&DAT_00014110,0,1,1,&local_res18);
+      if (iVar1 < 0) {
+        DAT_00014358 = 2;
+      }
+      else {
+        DAT_00014358 = 1;
+        ExFreePoolWithTag(local_res18,0);
+      }
+    }
+    local_res18 = &DAT_00014110;
+    if (DAT_00014358 != 1) {
+      local_res18 = (undefined *)0x0;
+    }
+    uVar2 = CmRegUtilCreateWstrKey
+                      (local_res20,L"Properties",0xf003f,0,local_res18,(undefined4 *)0x0,local_18);
+    ZwClose(local_res20);
+    if (-1 < (int)uVar2) {
+      uVar3 = RtlLengthSecurityDescriptor(*(undefined8 *)(param_2 + 8));
+      uVar2 = CmRegUtilWstrValueSetFullBuffer
+                        (local_18[0],L"Security",3,*(undefined8 *)(param_2 + 8),uVar3);
+      ZwClose(local_18[0]);
+    }
+    uVar4 = (ulonglong)uVar2;
+  }
+  return uVar4;
+}
+
+
+----- FUNCTION SepSddlParseWideStringUlong @ 00016980 -----
+
+/* Library Function - Single Match
+    SepSddlParseWideStringUlong
+   
+   Library: Visual Studio 2019 Release */
+
+undefined8 SepSddlParseWideStringUlong(ushort *param_1,undefined8 *param_2,uint *param_3)
+
+{
+  ushort uVar1;
+  uint uVar2;
+  undefined8 uVar3;
+  int iVar4;
+  int iVar5;
+  uint uVar6;
+  ushort *puVar7;
+  
+  *param_3 = 0;
+  *param_2 = param_1;
+  uVar1 = *param_1;
+  if (uVar1 == 0x30) {
+    if ((param_1[1] != 0x78) && (param_1[1] != 0x58)) {
+      uVar1 = *param_1;
+      goto LAB_000169c5;
+    }
+    param_1 = param_1 + 2;
+  }
+  else {
+LAB_000169c5:
+    if ((0x2f < uVar1) && (iVar5 = 10, *param_1 < 0x3a)) goto LAB_000169d7;
+  }
+  iVar5 = 0x10;
+LAB_000169d7:
+  puVar7 = param_1;
+  uVar6 = 0;
+  while( true ) {
+    uVar1 = *puVar7;
+    uVar2 = (uint)uVar1;
+    if (uVar1 == 0) break;
+    if ((uVar1 < 0x30) || (0x39 < uVar1)) {
+      if (iVar5 != 0x10) break;
+      if ((uVar1 < 0x41) || (0x46 < uVar1)) {
+        if ((uVar1 < 0x61) || (0x66 < uVar1)) break;
+        iVar4 = uVar2 - 0x57;
+      }
+      else {
+        iVar4 = uVar2 - 0x37;
+      }
+    }
+    else {
+      iVar4 = uVar2 - 0x30;
+    }
+    uVar2 = uVar6 * iVar5 + iVar4;
+    if (uVar2 < uVar6) goto LAB_00016a56;
+    puVar7 = puVar7 + 1;
+    uVar6 = uVar2;
+  }
+  if (puVar7 == param_1) {
+LAB_00016a56:
+    uVar3 = 0;
+  }
+  else {
+    *param_2 = puVar7;
+    uVar3 = 1;
+    *param_3 = uVar6;
+  }
+  return uVar3;
+}
+
+
+----- FUNCTION SepSddlAddAceToAcl @ 00016a60 -----
+
+/* Library Function - Single Match
+    SepSddlAddAceToAcl
+   
+   Library: Visual Studio 2019 Release */
+
+undefined8
+SepSddlAddAceToAcl(longlong *param_1,uint *param_2,undefined8 param_3,undefined8 param_4,
+                  undefined4 param_5,int param_6,undefined8 param_7)
+
+{
+  uint uVar1;
+  ulonglong *puVar2;
+  int iVar3;
+  ulonglong *_Dst;
+  undefined8 uVar4;
+  uint uVar5;
+  uint uVar6;
+  
+  puVar2 = (ulonglong *)*param_1;
+  uVar1 = *param_2;
+  iVar3 = RtlLengthSid(param_7);
+  uVar6 = iVar3 + 8 + uVar1;
+  _Dst = puVar2;
+  if (*(ushort *)((longlong)puVar2 + 2) < uVar6) {
+    uVar5 = (iVar3 + 8) * param_6 + uVar1;
+    _Dst = (ulonglong *)ExAllocatePoolWithTag(1,uVar5,0x6c416553);
+    if (_Dst == (ulonglong *)0x0) {
+      return 0xc000009a;
+    }
+    FUN_00011d90(_Dst,0,(ulonglong)uVar5);
+    memcpy(_Dst,(void *)*param_1,(ulonglong)uVar1);
+    *(short *)((longlong)_Dst + 2) = (short)uVar5;
+    ExFreePoolWithTag(puVar2,0);
+    *param_1 = (longlong)_Dst;
+  }
+  *param_2 = uVar6;
+  uVar4 = RtlAddAccessAllowedAce(_Dst,2,param_5,param_7);
+  return uVar4;
+}
+
+
+----- FUNCTION SepSddlLookupAccessMaskInTable @ 00016b48 -----
+
+/* Library Function - Single Match
+    SepSddlLookupAccessMaskInTable
+   
+   Library: Visual Studio 2019 Release */
+
+undefined8 SepSddlLookupAccessMaskInTable(wchar_t *param_1,undefined4 *param_2,longlong *param_3)
+
+{
+  int iVar1;
+  uint uVar2;
+  undefined **ppuVar3;
+  
+  uVar2 = 0;
+  ppuVar3 = &PTR_DAT_00014260;
+  do {
+    iVar1 = _wcsnicmp(param_1,(wchar_t *)*ppuVar3,(ulonglong)*(uint *)(ppuVar3 + 1));
+    if (iVar1 == 0) {
+      *param_2 = (&DAT_0001426c)[(ulonglong)uVar2 * 4];
+      *param_3 = (longlong)(param_1 + (uint)(&DAT_00014268)[(ulonglong)uVar2 * 4]);
+      return 1;
+    }
+    uVar2 = uVar2 + 1;
+    ppuVar3 = ppuVar3 + 2;
+  } while (uVar2 < 8);
+  *param_2 = 0;
+  *param_3 = (longlong)param_1;
+  return 0;
+}
+
+
+----- FUNCTION SepSddlGetSidForString @ 00016be0 -----
+
+/* Library Function - Single Match
+    SepSddlGetSidForString
+   
+   Library: Visual Studio 2019 Release */
+
+undefined8 SepSddlGetSidForString(wchar_t *param_1,undefined8 *param_2,longlong *param_3)
+
+{
+  char cVar1;
+  int iVar2;
+  uint *puVar3;
+  uint uVar4;
+  ulonglong uVar5;
+  
+  uVar5 = 0;
+  puVar3 = &DAT_00014154;
+  do {
+    iVar2 = _wcsnicmp(param_1,(wchar_t *)(&DAT_0001414c + uVar5 * 0x18),(ulonglong)*puVar3);
+    if (iVar2 == 0) {
+      uVar4 = (&DAT_00014154)[uVar5 * 6];
+      *param_3 = (longlong)(param_1 + uVar4);
+      if (((&DAT_00014148)[uVar5 * 6] == 1) &&
+         (cVar1 = IoIsWdmVersionAvailable
+                            (1,CONCAT71((int7)((ulonglong)(param_1 + uVar4) >> 8),0x20)),
+         cVar1 == '\0')) {
+        *param_2 = 0;
+      }
+      else {
+        *param_2 = *(undefined8 *)((&DAT_00014140)[uVar5 * 3] + *(longlong *)SeExports_exref);
+      }
+      return 0;
+    }
+    uVar4 = (int)uVar5 + 1;
+    uVar5 = (ulonglong)uVar4;
+    puVar3 = puVar3 + 6;
+  } while (uVar4 < 0xc);
+  *param_2 = 0;
+  return 0xc0000073;
+}
+
+
+----- FUNCTION SepSddlGetAclForString @ 00016ca4 -----
+
+/* Library Function - Single Match
+    SepSddlGetAclForString
+   
+   Library: Visual Studio 2019 Release */
+
+ulonglong SepSddlGetAclForString(wchar_t *param_1,longlong *param_2,ulonglong *param_3)
+
+{
+  wchar_t wVar1;
+  short sVar2;
+  int iVar3;
+  wchar_t *pwVar4;
+  ulonglong uVar5;
+  undefined8 *puVar6;
+  ulonglong *puVar7;
+  longlong lVar8;
+  undefined8 uVar9;
+  ulonglong uVar10;
+  ulonglong uVar11;
+  short *psVar12;
+  uint uVar13;
+  ulonglong uVar14;
+  uint uVar15;
+  uint local_res8 [2];
+  uint local_res10 [2];
+  uint local_res18 [2];
+  wchar_t *local_res20;
+  short *local_58;
+  longlong local_50 [2];
+  
+  uVar5 = 0;
+  *param_2 = 0;
+  iVar3 = 0;
+  local_50[0] = 0;
+  pwVar4 = wcschr(param_1,L':');
+  *param_3 = (ulonglong)pwVar4;
+  if (pwVar4 == param_1) {
+    uVar5 = 0xc000000d;
+  }
+  else {
+    if (pwVar4 == (wchar_t *)0x0) {
+      uVar11 = 0xffffffffffffffff;
+      pwVar4 = param_1;
+      do {
+        if (uVar11 == 0) break;
+        uVar11 = uVar11 - 1;
+        wVar1 = *pwVar4;
+        pwVar4 = pwVar4 + 1;
+      } while (wVar1 != L'\0');
+      pwVar4 = param_1 + (~uVar11 - 1);
+    }
+    else {
+      pwVar4 = pwVar4 + -1;
+    }
+    *param_3 = (ulonglong)pwVar4;
+    uVar11 = uVar5;
+    if (param_1 < (wchar_t *)*param_3) {
+      pwVar4 = param_1;
+      uVar14 = uVar5;
+      do {
+        if (*pwVar4 == L';') {
+          uVar11 = (ulonglong)((int)uVar11 + 1);
+        }
+        else if (*pwVar4 != L' ') {
+          uVar14 = 1;
+        }
+        iVar3 = (int)uVar14;
+        pwVar4 = pwVar4 + 1;
+      } while (pwVar4 < (wchar_t *)*param_3);
+    }
+    uVar15 = (uint)(uVar11 / 5);
+    if (((int)uVar11 == uVar15 * 5) && (((int)uVar11 != 0 || (iVar3 == 0)))) {
+      if (uVar15 == 0) {
+        puVar6 = (undefined8 *)ExAllocatePoolWithTag(1,8);
+        *param_2 = (longlong)puVar6;
+        if (puVar6 != (undefined8 *)0x0) {
+          *puVar6 = 0;
+          *(undefined1 *)*param_2 = 2;
+          *(undefined1 *)(*param_2 + 1) = 0;
+          *(undefined2 *)(*param_2 + 2) = 8;
+          *(undefined2 *)(*param_2 + 4) = 0;
+          *(undefined2 *)(*param_2 + 6) = 0;
+          return 0;
+        }
+      }
+      else {
+        uVar13 = uVar15 * 0x30 + 8;
+        if (0xffff < uVar13) {
+          uVar13 = 0xffff;
+        }
+        puVar7 = (ulonglong *)ExAllocatePoolWithTag(1,(ulonglong)uVar13,0x6c416553);
+        *param_2 = (longlong)puVar7;
+        if (puVar7 != (ulonglong *)0x0) {
+          local_res10[0] = 8;
+          FUN_00011d90(puVar7,0,(ulonglong)uVar13);
+          *(undefined1 *)*param_2 = 2;
+          *(undefined1 *)(*param_2 + 1) = 0;
+          *(short *)(*param_2 + 2) = (short)uVar13;
+          *(undefined2 *)(*param_2 + 4) = 0;
+          *(undefined2 *)(*param_2 + 6) = 0;
+          uVar11 = uVar5;
+          uVar14 = uVar5;
+          uVar13 = 8;
+          if (uVar15 != 0) {
+            do {
+              local_res8[0] = 0;
+              for (; *param_1 == L' '; param_1 = param_1 + 1) {
+              }
+              if (*param_1 != L'(') goto LAB_00016e64;
+              do {
+                param_1 = param_1 + 1;
+LAB_00016e64:
+              } while (*param_1 == L' ');
+              iVar3 = _wcsnicmp(param_1,L"A",1);
+              if (iVar3 != 0) {
+                uVar11 = 0xc000000d;
+                break;
+              }
+              for (pwVar4 = param_1 + 2; *pwVar4 == L' '; pwVar4 = pwVar4 + 1) {
+              }
+              if (*pwVar4 != L';') {
+                uVar11 = 0xc000000d;
+                goto LAB_00017022;
+              }
+              do {
+                pwVar4 = pwVar4 + 1;
+              } while (*pwVar4 == L' ');
+              wVar1 = *pwVar4;
+              uVar10 = uVar5;
+              uVar13 = 0;
+              while (wVar1 != L';') {
+                for (; *pwVar4 == L' '; pwVar4 = pwVar4 + 1) {
+                }
+                uVar9 = SepSddlLookupAccessMaskInTable(pwVar4,local_res18,(longlong *)&local_res20);
+                if ((int)uVar9 == 0) {
+                  SepSddlParseWideStringUlong((ushort *)pwVar4,&local_res20,local_res8);
+                  if (local_res20 == pwVar4) {
+                    uVar11 = 0xc000000d;
+                    uVar13 = local_res8[0];
+                    goto LAB_00016eb6;
+                  }
+                }
+                else {
+                  local_res8[0] = (uint)uVar10 | local_res18[0];
+                }
+                uVar10 = (ulonglong)local_res8[0];
+                pwVar4 = local_res20;
+                uVar13 = local_res8[0];
+                wVar1 = *local_res20;
+              }
+              pwVar4 = pwVar4 + 1;
+LAB_00016eb6:
+              if ((int)uVar11 != 0) goto LAB_00017022;
+              lVar8 = 2;
+              do {
+                for (; *pwVar4 == L' '; pwVar4 = pwVar4 + 1) {
+                }
+                if (*pwVar4 != L';') {
+                  uVar11 = 0xc000000d;
+                }
+                pwVar4 = pwVar4 + 1;
+                lVar8 = lVar8 + -1;
+              } while (lVar8 != 0);
+              if ((int)uVar11 != 0) goto LAB_00017022;
+              for (; *pwVar4 == L' '; pwVar4 = pwVar4 + 1) {
+              }
+              uVar10 = SepSddlGetSidForString(pwVar4,local_50,(longlong *)&local_58);
+              uVar11 = uVar10 & 0xffffffff;
+              if ((int)uVar10 != 0) goto LAB_00017022;
+              if (local_58 == (short *)0x0) {
+LAB_00017010:
+                uVar11 = 0xc0000077;
+                goto LAB_00017022;
+              }
+              sVar2 = *local_58;
+              psVar12 = local_58;
+              while (sVar2 == 0x20) {
+                psVar12 = psVar12 + 1;
+                sVar2 = *psVar12;
+              }
+              local_58 = psVar12;
+              if (*psVar12 != 0x29) goto LAB_00017010;
+              param_1 = psVar12 + 1;
+              if (local_50[0] != 0) {
+                uVar10 = SepSddlAddAceToAcl(param_2,local_res10,0,0,uVar13,uVar15 - (int)uVar14,
+                                            local_50[0]);
+                uVar11 = uVar10 & 0xffffffff;
+                if ((int)uVar10 != 0) goto LAB_00017022;
+              }
+              if (*param_1 == L'(') {
+                param_1 = psVar12 + 2;
+              }
+              uVar13 = (int)uVar14 + 1;
+              uVar14 = (ulonglong)uVar13;
+            } while (uVar13 < uVar15);
+            uVar13 = local_res10[0];
+            if ((int)uVar11 != 0) {
+LAB_00017022:
+              ExFreePoolWithTag(*param_2,0);
+              *param_2 = 0;
+              return uVar11;
+            }
+          }
+          *(short *)(*param_2 + 2) = (short)uVar13;
+          return uVar11;
+        }
+      }
+      uVar5 = 0xc000009a;
+    }
+    else {
+      uVar5 = 0xc000000d;
+    }
+  }
+  return uVar5;
+}
+
+
+----- FUNCTION SepSddlDaclFromSDDLString @ 00017064 -----
+
+/* Library Function - Single Match
+    SepSddlDaclFromSDDLString
+   
+   Library: Visual Studio 2019 Release */
+
+ulonglong SepSddlDaclFromSDDLString(short *param_1,int param_2,uint *param_3,longlong *param_4)
+
+{
+  ulonglong uVar1;
+  ulonglong uVar2;
+  wchar_t *pwVar3;
+  uint uVar4;
+  longlong local_res8;
+  short *local_res18;
+  
+  *param_4 = 0;
+  *param_3 = 0;
+  for (; *param_1 == 0x20; param_1 = param_1 + 1) {
+  }
+  if ((*param_1 == 0x44) && (param_1[1] == 0x3a)) {
+    pwVar3 = param_1 + 2;
+    uVar4 = -(uint)(param_2 != 0) & 8;
+    if (*pwVar3 == L'P') {
+      pwVar3 = param_1 + 3;
+      uVar4 = uVar4 | 0x1000;
+    }
+    uVar2 = SepSddlGetAclForString(pwVar3,&local_res8,(ulonglong *)&local_res18);
+    uVar1 = uVar2 & 0xffffffff;
+    if ((int)uVar2 == 0) {
+      for (; *local_res18 == 0x20; local_res18 = local_res18 + 1) {
+      }
+      if (*local_res18 == 0) {
+        *param_4 = local_res8;
+        *param_3 = uVar4;
+        return uVar1;
+      }
+      uVar1 = 0xc000000d;
+    }
+    if (local_res8 != 0) {
+      ExFreePoolWithTag(local_res8,0);
+    }
+  }
+  else {
+    uVar1 = 0xc000000d;
+  }
+  return uVar1;
+}
+
+
+----- FUNCTION SepSddlSecurityDescriptorFromSDDLString @ 0001712c -----
+
+/* Library Function - Single Match
+    SepSddlSecurityDescriptorFromSDDLString
+   
+   Library: Visual Studio 2019 Release */
+
+ulonglong SepSddlSecurityDescriptorFromSDDLString(short *param_1,int param_2,longlong *param_3)
+
+{
+  uint uVar1;
+  ulonglong uVar2;
+  longlong lVar3;
+  ulonglong uVar4;
+  undefined4 local_res18 [2];
+  ushort local_res20 [4];
+  longlong local_38;
+  undefined1 local_30 [2];
+  ushort local_2e;
+  
+  local_38 = 0;
+  lVar3 = 0;
+  *param_3 = 0;
+  uVar2 = SepSddlDaclFromSDDLString(param_1,param_2,(uint *)local_res20,&local_38);
+  uVar4 = uVar2 & 0xffffffff;
+  if (-1 < (int)uVar2) {
+    RtlCreateSecurityDescriptor(local_30,1);
+    RtlSetDaclSecurityDescriptor(local_30,1,local_38,0);
+    local_res18[0] = 0;
+    local_2e = local_2e | local_res20[0];
+    RtlAbsoluteToSelfRelativeSD(local_30,0,local_res18);
+    lVar3 = ExAllocatePoolWithTag(1,local_res18[0],0x64536553);
+    if (lVar3 == 0) {
+      uVar4 = 0xc000009a;
+    }
+    else {
+      uVar1 = RtlAbsoluteToSelfRelativeSD(local_30,lVar3,local_res18);
+      uVar4 = (ulonglong)uVar1;
+      if (-1 < (int)uVar1) {
+        ExFreePoolWithTag(local_38,0);
+        *param_3 = lVar3;
+        return uVar4;
+      }
+    }
+  }
+  if (local_38 != 0) {
+    ExFreePoolWithTag(local_38,0);
+  }
+  if (lVar3 != 0) {
+    ExFreePoolWithTag(lVar3,0);
+  }
+  return uVar4;
+}
+
+
+----- FUNCTION SeSddlSecurityDescriptorFromSDDL @ 0001722c -----
+
+/* Library Function - Single Match
+    SeSddlSecurityDescriptorFromSDDL
+   
+   Library: Visual Studio 2019 Release */
+
+ulonglong SeSddlSecurityDescriptorFromSDDL(ushort *param_1,int param_2,longlong *param_3)
+
+{
+  ulonglong uVar1;
+  short *_Dst;
+  
+  uVar1 = (ulonglong)*param_1 + 2;
+  if ((param_1[1] == uVar1) && ((*(short **)(param_1 + 4))[*param_1 >> 1] == 0)) {
+    uVar1 = SepSddlSecurityDescriptorFromSDDLString(*(short **)(param_1 + 4),param_2,param_3);
+    return uVar1;
+  }
+  _Dst = (short *)ExAllocatePoolWithTag(1,uVar1,0x73546553);
+  if (_Dst == (short *)0x0) {
+    *param_3 = 0;
+    uVar1 = 0xc000009a;
+  }
+  else {
+    memcpy(_Dst,*(void **)(param_1 + 4),(ulonglong)*param_1);
+    _Dst[*param_1 >> 1] = 0;
+    uVar1 = SepSddlSecurityDescriptorFromSDDLString(_Dst,param_2,param_3);
+    uVar1 = uVar1 & 0xffffffff;
+    ExFreePoolWithTag(_Dst,0);
+  }
+  return uVar1;
+}
+
+
+----- FUNCTION SeSetSecurityAccessMask @ 000172f4 -----
+
+/* Library Function - Single Match
+    SeSetSecurityAccessMask
+   
+   Library: Visual Studio 2019 Release */
+
+void SeSetSecurityAccessMask(byte param_1,uint *param_2)
+
+{
+  *param_2 = 0;
+  if (((param_1 & 1) != 0) || ((param_1 & 2) != 0)) {
+    *param_2 = 0x80000;
+  }
+  if ((param_1 & 4) != 0) {
+    *param_2 = *param_2 | 0x40000;
+  }
+  if ((param_1 & 8) != 0) {
+    *param_2 = *param_2 | 0x1000000;
+  }
+  return;
+}
+
+
+----- FUNCTION SeUtilSecurityInfoFromSecurityDescriptor @ 00017320 -----
+
+/* Library Function - Single Match
+    SeUtilSecurityInfoFromSecurityDescriptor
+   
+   Library: Visual Studio 2019 Release */
+
+undefined8
+SeUtilSecurityInfoFromSecurityDescriptor(undefined8 param_1,undefined1 *param_2,uint *param_3)
+
+{
+  undefined8 uVar1;
+  uint uVar2;
+  undefined1 local_res10 [16];
+  char local_res20 [8];
+  longlong local_28;
+  undefined1 local_20 [8];
+  
+  *param_2 = 0;
+  *param_3 = 0;
+  uVar1 = RtlGetOwnerSecurityDescriptor(param_1,&local_28,local_res10);
+  if (-1 < (int)uVar1) {
+    uVar2 = (uint)(local_28 != 0);
+    uVar1 = RtlGetGroupSecurityDescriptor(param_1,&local_28,local_res10);
+    if (-1 < (int)uVar1) {
+      if (local_28 != 0) {
+        uVar2 = uVar2 | 2;
+      }
+      uVar1 = RtlGetSaclSecurityDescriptor(param_1,local_res20,local_20,local_res10);
+      if (-1 < (int)uVar1) {
+        if (local_res20[0] != '\0') {
+          uVar2 = uVar2 | 8;
+        }
+        uVar1 = RtlGetDaclSecurityDescriptor(param_1,local_res20,local_20,local_res10);
+        if (-1 < (int)uVar1) {
+          if (local_res20[0] != '\0') {
+            uVar2 = uVar2 | 4;
+          }
+          *param_2 = local_res10[0];
+          *param_3 = uVar2;
+          uVar1 = 0;
+        }
+      }
+    }
+  }
+  return uVar1;
+}
+
+
+----- FUNCTION CmpRegUtilAllocateUnicodeString @ 000173f0 -----
+
+/* Library Function - Single Match
+    CmpRegUtilAllocateUnicodeString
+   
+   Library: Visual Studio 2019 Release */
+
+uint CmpRegUtilAllocateUnicodeString(undefined2 *param_1,ushort param_2)
+
+{
+  longlong lVar1;
+  
+  *param_1 = 0;
+  param_1[1] = param_2 + 2;
+  lVar1 = ExAllocatePoolWithTag(1,(ulonglong)param_2 + 2,0x63557050);
+  *(longlong *)(param_1 + 4) = lVar1;
+  return ~-(uint)(lVar1 != 0) & 0xc000009a;
+}
+
+
+----- FUNCTION CmRegUtilUcValueSetUcString @ 0001743c -----
+
+/* Library Function - Single Match
+    CmRegUtilUcValueSetUcString
+   
+   Library: Visual Studio 2019 Release */
+
+uint CmRegUtilUcValueSetUcString(undefined8 param_1,undefined8 param_2,ushort *param_3)
+
+{
+  ushort uVar1;
+  uint uVar2;
+  ushort local_18 [4];
+  void *local_10;
+  
+  uVar1 = *param_3;
+  if ((uint)param_3[1] - (uint)uVar1 < 2) {
+    uVar2 = CmpRegUtilAllocateUnicodeString(local_18,uVar1);
+    if (-1 < (int)uVar2) {
+      local_18[0] = *param_3;
+      memcpy(local_10,*(void **)(param_3 + 4),(ulonglong)local_18[0]);
+      *(undefined2 *)((longlong)local_10 + (ulonglong)(local_18[0] >> 1) * 2) = 0;
+      uVar2 = ZwSetValueKey(param_1,param_2,0,1,local_10,local_18[0] + 2);
+      RtlFreeUnicodeString(local_18);
+    }
+  }
+  else {
+    *(undefined2 *)(*(longlong *)(param_3 + 4) + (ulonglong)(uVar1 >> 1) * 2) = 0;
+    uVar2 = ZwSetValueKey(param_1,param_2,0,1,*(undefined8 *)(param_3 + 4),*param_3 + 2);
+  }
+  return uVar2;
+}
+
+
+----- FUNCTION CmRegUtilUcValueGetDword @ 0001753c -----
+
+/* Library Function - Single Match
+    CmRegUtilUcValueGetDword
+   
+   Library: Visual Studio 2019 Release */
+
+void CmRegUtilUcValueGetDword
+               (undefined8 param_1,undefined8 param_2,undefined4 param_3,undefined4 *param_4)
+
+{
+  int iVar1;
+  undefined1 auStack_58 [32];
+  undefined4 local_38;
+  undefined1 *local_30;
+  undefined1 local_28 [8];
+  undefined1 local_20 [4];
+  int local_1c;
+  undefined4 local_14;
+  ulonglong local_10;
+  
+  local_10 = DAT_00014100 ^ (ulonglong)auStack_58;
+  local_30 = local_28;
+  local_38 = 0x10;
+  iVar1 = ZwQueryValueKey(param_1,param_2,2,local_20);
+  if ((-1 < iVar1) && (local_1c == 4)) {
+    param_3 = local_14;
+  }
+  *param_4 = param_3;
+  FUN_00011c10(local_10 ^ (ulonglong)auStack_58);
+  return;
+}
+
+
+----- FUNCTION CmRegUtilCreateUcKey @ 000175b4 -----
+
+/* Library Function - Single Match
+    CmRegUtilCreateUcKey
+   
+   Library: Visual Studio 2019 Release */
+
+int CmRegUtilCreateUcKey
+              (undefined8 param_1,undefined8 param_2,undefined4 param_3,undefined4 param_4,
+              undefined8 param_5,undefined4 *param_6,undefined8 *param_7)
+
+{
+  int iVar1;
+  undefined8 local_res8 [4];
+  undefined4 local_38 [2];
+  undefined8 local_30;
+  undefined8 local_28;
+  undefined4 local_20;
+  undefined8 local_18;
+  undefined8 local_10;
+  
+  local_18 = param_5;
+  local_38[0] = 0x30;
+  local_20 = 0x240;
+  local_10 = 0;
+  local_30 = param_1;
+  local_28 = param_2;
+  iVar1 = ZwCreateKey(local_res8,param_3,local_38,0,0,param_4,&param_5);
+  if (iVar1 < 0) {
+    local_res8[0] = 0;
+    param_5._0_4_ = 0;
+  }
+  *param_7 = local_res8[0];
+  if (param_6 != (undefined4 *)0x0) {
+    *param_6 = (undefined4)param_5;
+  }
+  return iVar1;
+}
+
+
+----- FUNCTION CmRegUtilOpenExistingUcKey @ 00017650 -----
+
+/* Library Function - Single Match
+    CmRegUtilOpenExistingUcKey
+   
+   Library: Visual Studio 2019 Release */
+
+void CmRegUtilOpenExistingUcKey
+               (undefined8 param_1,undefined8 param_2,undefined4 param_3,undefined8 *param_4)
+
+{
+  int iVar1;
+  undefined8 local_res8 [4];
+  undefined4 local_38 [2];
+  undefined8 local_30;
+  undefined8 local_28;
+  undefined4 local_20;
+  undefined8 local_18;
+  undefined8 local_10;
+  
+  *param_4 = 0;
+  local_38[0] = 0x30;
+  local_20 = 0x240;
+  local_18 = 0;
+  local_10 = 0;
+  local_30 = param_1;
+  local_28 = param_2;
+  iVar1 = ZwOpenKey(local_res8,param_3,local_38);
+  if (-1 < iVar1) {
+    *param_4 = local_res8[0];
+  }
+  return;
+}
+
+
+----- FUNCTION CmRegUtilWstrValueSetWstrString @ 000176ac -----
+
+/* Library Function - Single Match
+    CmRegUtilWstrValueSetWstrString
+   
+   Library: Visual Studio 2019 Release */
+
+void CmRegUtilWstrValueSetWstrString(undefined8 param_1,short *param_2,short *param_3)
+
+{
+  undefined8 uVar1;
+  ushort local_28 [8];
+  short local_18 [8];
+  
+  uVar1 = WdmlibRtlInitUnicodeStringEx((short *)local_28,param_3);
+  if (-1 < (int)uVar1) {
+    uVar1 = WdmlibRtlInitUnicodeStringEx(local_18,param_2);
+    if (-1 < (int)uVar1) {
+      CmRegUtilUcValueSetUcString(param_1,local_18,local_28);
+    }
+  }
+  return;
+}
+
+
+----- FUNCTION CmRegUtilWstrValueSetUcString @ 00017704 -----
+
+/* Library Function - Single Match
+    CmRegUtilWstrValueSetUcString
+   
+   Library: Visual Studio 2019 Release */
+
+void CmRegUtilWstrValueSetUcString(undefined8 param_1,short *param_2,ushort *param_3)
+
+{
+  undefined8 uVar1;
+  short local_18 [8];
+  
+  uVar1 = WdmlibRtlInitUnicodeStringEx(local_18,param_2);
+  if (-1 < (int)uVar1) {
+    CmRegUtilUcValueSetUcString(param_1,local_18,param_3);
+  }
+  return;
+}
+
+
+----- FUNCTION CmRegUtilWstrValueSetFullBuffer @ 00017744 -----
+
+/* Library Function - Single Match
+    CmRegUtilWstrValueSetFullBuffer
+   
+   Library: Visual Studio 2019 Release */
+
+void CmRegUtilWstrValueSetFullBuffer
+               (undefined8 param_1,short *param_2,undefined4 param_3,undefined8 param_4,
+               undefined4 param_5)
+
+{
+  undefined8 uVar1;
+  short local_18 [8];
+  
+  uVar1 = WdmlibRtlInitUnicodeStringEx(local_18,param_2);
+  if (-1 < (int)uVar1) {
+    ZwSetValueKey(param_1,local_18,0,param_3,param_4,param_5);
+  }
+  return;
+}
+
+
+----- FUNCTION CmRegUtilWstrValueGetDword @ 000177a4 -----
+
+/* Library Function - Single Match
+    CmRegUtilWstrValueGetDword
+   
+   Library: Visual Studio 2019 Release */
+
+void CmRegUtilWstrValueGetDword
+               (undefined8 param_1,short *param_2,undefined4 param_3,undefined4 *param_4)
+
+{
+  undefined8 uVar1;
+  short local_18 [8];
+  
+  uVar1 = WdmlibRtlInitUnicodeStringEx(local_18,param_2);
+  if (-1 < (int)uVar1) {
+    CmRegUtilUcValueGetDword(param_1,local_18,param_3,param_4);
+  }
+  return;
+}
+
+
+----- FUNCTION CmRegUtilCreateWstrKey @ 000177f4 -----
+
+/* Library Function - Single Match
+    CmRegUtilCreateWstrKey
+   
+   Library: Visual Studio 2019 Release */
+
+void CmRegUtilCreateWstrKey
+               (undefined8 param_1,short *param_2,undefined4 param_3,undefined4 param_4,
+               undefined8 param_5,undefined4 *param_6,undefined8 *param_7)
+
+{
+  undefined8 uVar1;
+  short local_18 [8];
+  
+  uVar1 = WdmlibRtlInitUnicodeStringEx(local_18,param_2);
+  if (-1 < (int)uVar1) {
+    CmRegUtilCreateUcKey(param_1,local_18,param_3,param_4,param_5,param_6,param_7);
+  }
+  return;
+}
+
+
+----- FUNCTION CmRegUtilOpenExistingWstrKey @ 0001786c -----
+
+/* Library Function - Single Match
+    CmRegUtilOpenExistingWstrKey
+   
+   Library: Visual Studio 2019 Release */
+
+void CmRegUtilOpenExistingWstrKey
+               (undefined8 param_1,short *param_2,undefined4 param_3,undefined8 *param_4)
+
+{
+  undefined8 uVar1;
+  short local_18 [8];
+  
+  uVar1 = WdmlibRtlInitUnicodeStringEx(local_18,param_2);
+  if (-1 < (int)uVar1) {
+    CmRegUtilOpenExistingUcKey(param_1,local_18,param_3,param_4);
+  }
+  return;
+}
+
+
+----- FUNCTION CmRegUtilUcValueGetFullBuffer @ 000178bc -----
+
+/* Library Function - Single Match
+    CmRegUtilUcValueGetFullBuffer
+   
+   Library: Visual Studio 2019 Release */
+
+int CmRegUtilUcValueGetFullBuffer
+              (undefined8 param_1,ushort *param_2,int param_3,int param_4,longlong *param_5)
+
+{
+  uint uVar1;
+  int iVar2;
+  longlong lVar3;
+  uint uVar4;
+  undefined4 local_res20 [2];
+  
+  *param_5 = 0;
+  uVar1 = *param_2 + 0x1f & 0xfffffff8;
+  uVar4 = uVar1 + param_4;
+  if (uVar4 < uVar1) {
+    return -0x3fffff6b;
+  }
+  lVar3 = ExAllocatePoolWithTag(0,uVar4,0x62527050);
+  if (lVar3 == 0) {
+LAB_00017914:
+    iVar2 = -0x3fffff66;
+  }
+  else {
+    iVar2 = ZwQueryValueKey(param_1,param_2,1,lVar3,uVar4,local_res20);
+    if (iVar2 < 0) {
+      ExFreePoolWithTag(lVar3,0);
+      if ((iVar2 != -0x7ffffffb) && (iVar2 != -0x3fffffdd)) {
+        return iVar2;
+      }
+      lVar3 = ExAllocatePoolWithTag(0,local_res20[0],0x62527050);
+      if (lVar3 == 0) goto LAB_00017914;
+      iVar2 = ZwQueryValueKey(param_1,param_2,1,lVar3,local_res20[0],local_res20);
+      if (-1 < iVar2) goto LAB_000179ad;
+    }
+    else {
+LAB_000179ad:
+      if ((param_3 == 0) || (*(int *)(lVar3 + 4) == param_3)) {
+        *param_5 = lVar3;
+        return 0;
+      }
+      iVar2 = -0x3fffffdc;
+    }
+    ExFreePoolWithTag(lVar3,0);
+  }
+  return iVar2;
+}
+
+
+----- FUNCTION CmRegUtilWstrValueGetFullBuffer @ 000179f4 -----
+
+/* Library Function - Single Match
+    CmRegUtilWstrValueGetFullBuffer
+   
+   Library: Visual Studio 2019 Release */
+
+void CmRegUtilWstrValueGetFullBuffer
+               (undefined8 param_1,short *param_2,int param_3,int param_4,longlong *param_5)
+
+{
+  undefined8 uVar1;
+  ushort local_18 [8];
+  
+  uVar1 = WdmlibRtlInitUnicodeStringEx((short *)local_18,param_2);
+  if (-1 < (int)uVar1) {
+    CmRegUtilUcValueGetFullBuffer(param_1,local_18,param_3,param_4,param_5);
+  }
+  return;
+}
+
+
+----- FUNCTION FUN_00018008 @ 00018008 -----
+
+/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */
+
+void FUN_00018008(void)
+
+{
+  if (((DAT_00014100 == 0) || (DAT_00014100 == 0x2b992ddfa232)) &&
+     (DAT_00014100 = (_DAT_fffff78000000320 ^ 0x14100) & 0xffffffffffff, DAT_00014100 == 0)) {
+    DAT_00014100 = 0x2b992ddfa232;
+  }
+  DAT_00014108 = ~DAT_00014100;
+  return;
+}
+
+
+----- FUNCTION entry @ 00018064 -----
+
+void entry(longlong param_1)
+
+{
+  FUN_00018008();
+  FUN_00011b30(param_1);
+  return;
+}
+
+
+

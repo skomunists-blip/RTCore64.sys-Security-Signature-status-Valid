@@ -1,0 +1,102 @@
+TestType=RTCore multi-target RAM canary verification
+User=HOME-PC\qq
+Elevated=True
+Scope=Helper-owned RAM targets only; no arbitrary RAM dump; no writes
+TargetClasses=NonPagedPoolAligned, ContiguousLow4G, ContiguousHigh4G(if allocation succeeds)
+---
+RtCanaryOpen=True
+RtCanaryOpenError=0
+RTCoreOpen=True
+RTCoreOpenError=0
+Target.Index=0
+Target.Label=NonPagedPoolAligned
+Target.Kind=NonPagedPoolAligned
+Target.Active=True
+Target.Intact=True
+Target.Physical=0x207C7C000
+Target.Below4G=False
+Target.PageSize=4096
+Target.Hash=955096517
+Target.First16=A7 FA 1D B0 D3 76 89 2C 4F E2 05 58 FB 1E B1 D4
+---
+Case=NonPagedPoolAligned direct neutral tuple
+Path=0x80002000 ZwMapViewOfSection
+MapSuccess=False
+MapError=87
+BytesReturned=0
+---
+Case=NonPagedPoolAligned direct display BAR18 tuple
+Path=0x80002000 ZwMapViewOfSection
+MapSuccess=False
+MapError=87
+BytesReturned=0
+---
+Case=NonPagedPoolAligned MmMapIoSpace display BAR18 tuple
+Path=0x80002040 MmMapIoSpace table
+MapSuccess=False
+MapError=1450
+BytesReturned=0
+---
+Target.Index=1
+Target.Label=ContiguousLow4G
+Target.Kind=ContiguousLow4G
+Target.Active=True
+Target.Intact=True
+Target.Physical=0xDB16C000
+Target.Below4G=True
+Target.PageSize=4096
+Target.Hash=2284170693
+Target.First16=94 C9 2E 83 E0 45 BA 1F 7C D1 36 6B C8 2D 82 E7
+---
+Case=ContiguousLow4G direct neutral tuple
+Path=0x80002000 ZwMapViewOfSection
+MapSuccess=False
+MapError=87
+BytesReturned=0
+---
+Case=ContiguousLow4G direct display BAR18 tuple
+Path=0x80002000 ZwMapViewOfSection
+MapSuccess=False
+MapError=87
+BytesReturned=0
+---
+Case=ContiguousLow4G MmMapIoSpace display BAR18 tuple
+Path=0x80002040 MmMapIoSpace table
+MapSuccess=False
+MapError=1450
+BytesReturned=0
+---
+Target.Index=2
+Target.Label=ContiguousHigh4G
+Target.Kind=ContiguousHigh4G
+Target.Active=True
+Target.Intact=True
+Target.Physical=0x223FEE000
+Target.Below4G=False
+Target.PageSize=4096
+Target.Hash=895958469
+Target.First16=C1 9C 7B D6 B5 10 EF 4A 29 84 63 3E 9D 78 D7 B2
+---
+Case=ContiguousHigh4G direct neutral tuple
+Path=0x80002000 ZwMapViewOfSection
+MapSuccess=False
+MapError=87
+BytesReturned=0
+---
+Case=ContiguousHigh4G direct display BAR18 tuple
+Path=0x80002000 ZwMapViewOfSection
+MapSuccess=False
+MapError=87
+BytesReturned=0
+---
+Case=ContiguousHigh4G MmMapIoSpace display BAR18 tuple
+Path=0x80002040 MmMapIoSpace table
+MapSuccess=False
+MapError=1450
+BytesReturned=0
+---
+Summary.TargetsEnumerated=3
+Summary.ActiveTargets=3
+Summary.AnyTargetMappedByRTCore=False
+Summary.AnyTargetReadProven=False
+Conclusion=RTCore did not map/read any helper-owned RAM target across tested classes.

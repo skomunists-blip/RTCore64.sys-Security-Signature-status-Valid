@@ -1,0 +1,57 @@
+TestType=Controlled VRAM/framebuffer marker probe via RTCore64
+User=HOME-PC\qq
+Elevated=True
+Mode=Read-only scan of prefetchable display BAR window; no writes, no MSR, no I/O-port, no PCI config writes
+Privacy=Only a self-generated marker color is searched; no VRAM dump or unrelated strings are saved
+DisplayBarBase=0xE0000000
+DisplayBarLength=0x1000000
+ChunkSize=0x40000
+PciTuple=B00:D02:F0 BarIndex=1
+MarkerRGB=0x31C79E
+MarkerBGRBytes=9E C7 31
+MinRunPixels=128
+---
+RTCoreOpen=True
+---
+Baseline.MappedChunks=64
+Baseline.FailedChunks=0
+Baseline.TotalMarkerPixelMatches=0
+Baseline.LongRunsFound=0
+---
+WithMarker.MappedChunks=64
+WithMarker.FailedChunks=0
+WithMarker.TotalMarkerPixelMatches=458312
+WithMarker.LongRunsFound=24
+WithMarker.Run[0]=Physical=0xE0000000;Align=0;RunPixels=900
+WithMarker.Run[1]=Physical=0xE0001000;Align=0;RunPixels=900
+WithMarker.Run[2]=Physical=0xE0002000;Align=0;RunPixels=900
+WithMarker.Run[3]=Physical=0xE0003000;Align=0;RunPixels=900
+WithMarker.Run[4]=Physical=0xE0004000;Align=0;RunPixels=900
+WithMarker.Run[5]=Physical=0xE0005000;Align=0;RunPixels=900
+WithMarker.Run[6]=Physical=0xE0006000;Align=0;RunPixels=900
+WithMarker.Run[7]=Physical=0xE0007000;Align=0;RunPixels=900
+WithMarker.Run[8]=Physical=0xE0008000;Align=0;RunPixels=900
+WithMarker.Run[9]=Physical=0xE0009000;Align=0;RunPixels=900
+WithMarker.Run[10]=Physical=0xE000A000;Align=0;RunPixels=900
+WithMarker.Run[11]=Physical=0xE000B000;Align=0;RunPixels=900
+WithMarker.Run[12]=Physical=0xE000C000;Align=0;RunPixels=900
+WithMarker.Run[13]=Physical=0xE000D000;Align=0;RunPixels=900
+WithMarker.Run[14]=Physical=0xE000E000;Align=0;RunPixels=900
+WithMarker.Run[15]=Physical=0xE000F000;Align=0;RunPixels=900
+WithMarker.Run[16]=Physical=0xE0040000;Align=0;RunPixels=900
+WithMarker.Run[17]=Physical=0xE0041000;Align=0;RunPixels=900
+WithMarker.Run[18]=Physical=0xE0042000;Align=0;RunPixels=900
+WithMarker.Run[19]=Physical=0xE0043000;Align=0;RunPixels=900
+WithMarker.Run[20]=Physical=0xE0044000;Align=0;RunPixels=900
+WithMarker.Run[21]=Physical=0xE0045000;Align=0;RunPixels=900
+WithMarker.Run[22]=Physical=0xE0046000;Align=0;RunPixels=900
+WithMarker.Run[23]=Physical=0xE0047000;Align=0;RunPixels=900
+---
+Summary.BaselineMatches=0
+Summary.WithMarkerMatches=458312
+Summary.DeltaMatches=458312
+Summary.BaselineLongRuns=0
+Summary.WithMarkerLongRuns=24
+Summary.DeltaLongRuns=24
+Summary.MarkerFoundInDisplayBar=True
+Conclusion=Controlled marker was found in the display BAR scan. This supports a VRAM/framebuffer information-disclosure finding, not full system RAM R/W.

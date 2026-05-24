@@ -1,0 +1,150 @@
+RTCore64.sys: driver-only deep findings (focused pass)
+Date: 2026-05-24
+Scope: static review of RTCore64.sys logic plus already collected safe dynamic evidence
+
+========================================================================
+1) Confirmed high-risk issues (driver level)
+========================================================================
+
+[CRITICAL] Validation-after-use in IOCTL 0x80002044 (MmUnmapIoSpace)
+- Function: FUN_00011438
+- Pattern: MmUnmapIoSpace(base,size) is called before ownership check against DAT_00014370 / DAT_00014b70.
+- Evidence:
+  - rtcore_comprehensive_audit.txt (decompile block with MmUnmapIoSpace before table check)
+  - rtcore_deep_issue_hunt.txt
+- Security effect:
+  - unsafe unmap path reachable from user-controlled request data after device open
+  - strong DoS/corruption class
+
+[HIGH] OOB bounds predicate weakness in 0x80002048 / 0x8000204C
+- Function: FUN_00011438
+- Pattern: check uses offset + width <= mapped_size with 32-bit arithmetic.
+- Evidence:
+  - rtcore_vm_oob_predicate_result.txt
+  - rtcore_vm_oob_write_predicate_result.txt
+  - rtcore_vm_bugcheck_collect_result.txt / rtcore_vm_bugcheck_collect_result_write.txt (BugCheck 0x50)
+- Security effect:
+  - admin-to-kernel crash/corruption reachability is proven
+  - stable arbitrary RAM R/W is not proven
+
+[HIGH] Broad BAR-derived MMIO allow policy
+- Function: FUN_00011044
+- Pattern: BAR base is masked to 0xFFFFFF00 and an unconditional +16MiB window is accepted.
+- Evidence:
+  - rtcore_pci_bar_bypass_static.txt
+  - rtcore_vm_pci_bar_feasibility_result.txt
+- Security effect:
+  - exposure of a synthetic MMIO window larger than actual BAR resource intent
+  - supports confirmed framebuffer/VRAM disclosure path
+
+========================================================================
+2) New deep findings around FUN_00011044 / FUN_00011150 / FUN_00011384
+========================================================================
+
+[HIGH] F1: FUN_00011384 slot-full success-without-rollback
+- Function: FUN_00011384
+- Pattern:
+  1) MmMapIoSpace succeeds
+  2) driver scans 256-entry table DAT_00014370 for free slot
+  3) if table is full, success status is kept and no MmUnmapIoSpace rollback is visible
+- Evidence:
+  - rtcore_deep_issue_hunt.txt (F1)
+  - rtcore_exploit_chain_assessment.md
+- Impact:
+  - mapping leak / resource leak / false-success state
+  - practical DoS amplification candidate
+- Status: static-confirmed candidate; dynamic full exhaustion not executed in safe pass
+
+[HIGH] F2: no synchronization for global mapping tables
+- Functions: FUN_00011384, FUN_00011438 (map/unmap/read/write table users)
+- Pattern: no visible lock discipline for DAT_00014370 / DAT_00014b70 accesses.
+- Evidence:
+  - rtcore_deep_issue_hunt.txt (F2)
+- Impact:
+  - race windows between map/unmap/read/write
+  - stale-slot/use-after-unmap style instability candidate
+- Status: static-confirmed candidate
+
+[MEDIUM-HIGH] F3: likely object/handle lifetime bug in FUN_00011150
+- Function: FUN_00011150
+- Pattern:
+  - ObReferenceObjectByHandle is called for \Device\PhysicalMemory
+  - no visible ObDereferenceObject call in import/call usage
+  - failure path can leave already opened section handle path inconsistent
+- Evidence:
+  - rtcore_deep_issue_hunt.txt (F3)
+  - rtcore_comprehensive_audit.txt (call/import mapping)
+- Impact:
+  - kernel object reference leak / handle lifetime bug candidate
+- Status: static-confirmed candidate
+
+[MEDIUM] F4: unload path does not reclaim outstanding DAT_00014370 mappings
+- Functions: unload path + mapping table users
+- Pattern: no visible table walk/unmap cleanup during unload.
+- Evidence:
+  - rtcore_deep_issue_hunt.txt (F4)
+- Impact:
+  - persistent leaked mappings if user path fails to clean up
+- Status: static-confirmed candidate
+
+[MEDIUM] F5/F6: fragile boundary math in FUN_00011044
+- Function: FUN_00011044
+- Pattern:
+  - trust in class-code + BAR read, fixed window derivation
+  - 32-bit arithmetic/truncation in BAR-window logic
+- Evidence:
+  - rtcore_deep_issue_hunt.txt (F5, F6)
+  - rtcore_pci_bar_bypass_static.txt
+- Impact:
+  - fragile behavior on atypical BAR layouts; larger exposure surface
+- Status: static-confirmed design weakness, bypass not dynamically proven
+
+[MEDIUM] F7: short-transfer blindness in 0x80002050 / 0x80002054
+- Function: FUN_00011438 (HalGetBusDataByOffset/HalSetBusDataByOffset branches)
+- Pattern: HAL return byte count is not used to enforce exact transfer size.
+- Evidence:
+  - rtcore_deep_issue_hunt.txt (F7)
+- Impact:
+  - operation may be reported success despite partial transfer
+- Status: static-confirmed reliability flaw
+
+[MEDIUM] F8: raw PCI config write bypass candidate (0xCFC-only guard)
+- Function: FUN_00011438 (raw out branches)
+- Pattern: guard blocks exact port 0xCFC while PCI config data window is 0xCFC-0xCFF.
+- Evidence:
+  - rtcore_deep_issue_hunt.txt (F8)
+  - rtcore_pci_bar_mutation_dryrun_result.txt (candidate only)
+- Impact:
+  - potential control-plane bypass to BAR/config mutation
+- Status: static/read-only candidate; mutation not executed
+
+[MEDIUM] F9: broad RDMSR/WRMSR exposure to elevated callers
+- Function: FUN_00011438 (0x80002030/34)
+- Pattern: partial denylist instead of strict allowlist.
+- Evidence:
+  - rtcore_deep_issue_hunt.txt (F9)
+- Impact:
+  - unstable hardware control surface; strong DoS potential
+- Status: static-confirmed risky surface
+
+========================================================================
+3) What is NOT proven in current evidence set
+========================================================================
+
+- Stable arbitrary physical RAM modification: NOT proven
+- Stable full RAM read: NOT proven
+- Full arbitrary physical RAM read/write primitive: NOT proven
+- Low-privileged direct LPE from ordinary user: NOT proven (device ACL blocks low user in tested VM)
+
+========================================================================
+4) Driver-focused conclusion
+========================================================================
+
+This build still contains multiple unsafe kernel patterns in RTCore64.sys:
+- validation-after-use in unmap path,
+- OOB predicate weakness with crash evidence,
+- weak MMIO boundary model,
+- mapping table lifecycle/synchronization weaknesses.
+
+These are sufficient for a high-severity kernel security report even without proving full arbitrary RAM R/W.
+

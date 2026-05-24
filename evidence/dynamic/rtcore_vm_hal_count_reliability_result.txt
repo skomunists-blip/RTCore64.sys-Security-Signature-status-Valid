@@ -1,0 +1,9 @@
+TestType=RTCore HAL count reliability probe for IOCTL 0x80002050
+User=DESKTOP-KGUIHGQ\ARTEM
+Elevated=True
+Mode=Read-only PCI config read path; no writes, no MSR, no raw I/O, no memory mapping
+Goal=Check whether clearly invalid tuples/offsets can still return driver-level success
+---
+RTCoreOpen=False
+RTCoreOpenError=2
+---

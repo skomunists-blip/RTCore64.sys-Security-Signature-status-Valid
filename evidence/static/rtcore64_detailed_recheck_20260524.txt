@@ -1,0 +1,191 @@
+RTCore64.sys detailed re-check (driver-only)
+Date: 2026-05-24
+Input set: rtcore_comprehensive_audit.txt, rtcore_deep_issue_hunt.txt, rtcore_pci_bar_bypass_static.txt, prior VM-safe dynamic outputs
+
+====================================================================
+F1) FUN_00011384: slot-table full -> success without rollback
+====================================================================
+Status: CONFIRMED (static logic)
+Confidence: High
+
+Why:
+- In FUN_00011384, after successful MmMapIoSpace:
+  - table scan loop checks up to 0x100 slots (DAT_00014370)
+  - if no empty slot, flow jumps to common success path
+  - uVar3 is set to STATUS_SUCCESS (0) regardless
+- No MmUnmapIoSpace rollback exists in this path.
+
+Key evidence:
+- rtcore_deep_issue_hunt.txt
+  - 000113db CALL MmMapIoSpace
+  - 00011402 CMP EDX,0x100
+  - 0001140a JMP 0x00011421
+  - 00011421 XOR EAX,EAX (success)
+- rtcore_comprehensive_audit.txt decompile of FUN_00011384
+
+Impact:
+- leaked/untracked kernel mapping candidate
+- possible resource exhaustion / reliability degradation
+- false-success semantic (caller sees success despite lost bookkeeping)
+
+====================================================================
+F2) DAT_00014370 / DAT_00014b70 synchronization absence
+====================================================================
+Status: PROBABLE (strong static design flaw)
+Confidence: High for "no visible locking"; Medium for practical race exploitability
+
+Why:
+- same global tables used by map/unmap/read/write paths
+- no visible lock/interlocked discipline in imports and call references:
+  - no KeAcquireSpinLock / KeReleaseSpinLock
+  - no ExAcquireFastMutex / ExReleaseFastMutex
+  - no resource lock family observed
+
+Key evidence:
+- rtcore_deep_issue_hunt.txt import presence block
+- table refs from FUN_00011384 and FUN_00011438 in both audit files
+
+Impact:
+- race windows between map/unmap/read/write checks and use
+- stale-slot / use-after-unmap style instability candidate
+
+====================================================================
+F3) FUN_00011150 lifetime path (object reference + handle cleanup)
+====================================================================
+Status: PROBABLE (partially confirmed, one previous claim needs correction)
+Confidence: Medium-High
+
+What is confirmed:
+- ObReferenceObjectByHandle is called.
+- ObDereferenceObject is not found in imports/calls.
+- Referenced object is not required for ZwMapViewOfSection path itself.
+
+What needed correction from earlier wording:
+- Earlier summary said "if ObReferenceObjectByHandle fails, opened section handle is returned without ZwClose."
+- In decompiled flow, ObReferenceObjectByHandle failure happens before later ZwClose points and appears to return directly.
+- That still indicates handle-lifetime scrutiny is needed, but the exact leak condition should be reported as "likely" unless revalidated in raw disassembly control-flow with all exceptional exits.
+
+Key evidence:
+- rtcore_deep_issue_hunt.txt decompile/disasm for FUN_00011150
+- rtcore_comprehensive_audit.txt imports + callsites
+
+Recommended report wording:
+- "Likely reference-lifetime issue: ObReferenceObjectByHandle is used without corresponding ObDereferenceObject visibility in this module."
+
+====================================================================
+F4) Unload path does not reclaim mapping table state
+====================================================================
+Status: CONFIRMED (static)
+Confidence: High
+
+Why:
+- unload routine FUN_00011008 only:
+  - IoDeleteSymbolicLink
+  - IoDeleteDevice
+- no walk over DAT_00014370 table and no explicit MmUnmapIoSpace cleanup in unload.
+
+Key evidence:
+- rtcore_deep_issue_hunt.txt decompile FUN_00011008
+
+Impact:
+- outstanding tracked mappings may survive until broader teardown
+- leak/reliability risk if user path does not clean all mappings
+
+====================================================================
+F5) FUN_00011044 MMIO boundary model weakness (BAR masked + fixed 16MiB)
+====================================================================
+Status: CONFIRMED (static behavior), dynamic risk class confirmed as disclosure surface
+Confidence: High
+
+Why:
+- BAR value masked by 0xFFFFFF00
+- window upper bound derived as base + 0x1000000
+- no verification of real BAR size/resource descriptor in this path
+
+Key evidence:
+- rtcore_pci_bar_bypass_static.txt
+  - 0001110d AND R11D,0xffffff00
+  - 00011121 LEA EAX,[R11 + 0x1000000]
+- rtcore_comprehensive_audit.txt decompile FUN_00011044
+
+Impact:
+- broader synthetic window than strict BAR resource constraints
+- practical MMIO/framebuffer disclosure already observed in VM-safe tests
+
+====================================================================
+F6) FUN_00011044 fragile 32-bit arithmetic/truncation
+====================================================================
+Status: CANDIDATE (static robustness issue, no bypass proof)
+Confidence: Medium
+
+Why:
+- arithmetic around BAR-derived window uses 32-bit intermediates
+- potential truncation fragility on atypical high BAR layouts
+- no direct dynamic bypass observed in current VM
+
+Key evidence:
+- FUN_00011044 decompile and instruction-level arithmetic pattern
+
+Impact:
+- boundary robustness weakness
+- may become relevant on different hardware/firmware topology
+
+====================================================================
+F7) IOCTL 0x80002050/54 ignores HAL byte-count result
+====================================================================
+Status: CONFIRMED (static reliability flaw)
+Confidence: High
+
+Why:
+- HalGetBusDataByOffset/HalSetBusDataByOffset return values are not checked.
+- Driver sets STATUS_SUCCESS and fixed IoStatus.Information on path success gating.
+
+Key evidence:
+- rtcore_deep_issue_hunt.txt decompile for 0x80002050 and 0x80002054 branches
+- rtcore_comprehensive_audit.txt corresponding decompile blocks
+
+Impact:
+- short transfer can be misreported as full success
+- reliability/consistency issue, can mislead caller logic
+
+====================================================================
+F8) PCI config data-window guard bypass candidate (0xCFC-only check)
+====================================================================
+Status: CANDIDATE (static/read-only)
+Confidence: Medium
+
+Why:
+- raw OUT branches gate exact port 0xCFC for BAR offset checks
+- PCI config data window is byte-addressable across 0xCFC-0xCFF
+- read-only dry-run supports candidate posture; mutation not executed
+
+Key evidence:
+- rtcore_pci_bar_bypass_static.txt:
+  - CMP [RBX],0xCFC checks
+  - interpretation note about 0xCFC-0xCFF
+- rtcore_pci_bar_mutation_dryrun_result.txt:
+  - candidate acknowledged, no mutation attempted
+
+Impact:
+- potential policy bypass path to BAR/config mutation
+- NOT currently a proven RAM R/W primitive in this evidence set
+
+====================================================================
+Cross-check with already proven dynamic effects
+====================================================================
+- Validation-after-use in 0x80002044: static-confirmed.
+- OOB predicate weakness in 0x80002048/4C: dynamic crash evidence exists (BugCheck 0x50 paths).
+- VRAM/framebuffer disclosure via allowed display BAR windows: dynamic-confirmed.
+- Full arbitrary RAM read/write: not proven.
+- Low-priv direct LPE: not proven in tested ACL/runtime state.
+
+====================================================================
+Bottom line for reporting quality
+====================================================================
+Use these labels to avoid overstatement:
+- Confirmed: F1, F4, F5, F7 (+ previously confirmed 0x80002044 validation-after-use and OOB predicate weakness)
+- Probable: F2, F3
+- Candidate: F6, F8
+
+This keeps the report technically strong and defensible.
+

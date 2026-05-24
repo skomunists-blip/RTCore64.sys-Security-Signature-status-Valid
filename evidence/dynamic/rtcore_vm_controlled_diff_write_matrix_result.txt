@@ -1,0 +1,72 @@
+TestType=RTCore controlled diff-write matrix
+User=HOME-PC\qq
+Elevated=True
+Mode=Map/unmap via 0x80002000/0x80002004 + in-bounds dword mutate+restore
+Safety=No OOB, no raw I/O, no MSR, no PCI writes
+---
+RTCoreOpen=True
+RTCoreOpenError=0
+---
+Case=LegacyROM_C0000
+Physical=0xC0000
+Tuple=B00:D00:F0 Bar=0
+MapSuccess=True
+MapError=0
+MapBytesReturned=8
+MappedUserVA=0x1A046D00000
+VirtualQuerySuccess=True
+ProtectRaw=0x204
+ProtectWritable=True
+DwordBefore=0xDA8E0040
+DwordMutatedTarget=0xDA8E0140
+DwordAfterMutation=0xDA8E0040
+DwordAfterRestore=0xDA8E0040
+CaseWriteAttempted=True
+CaseWriteObserved=False
+CaseRestoreObserved=True
+CleanupUnmapSuccess=True
+CleanupUnmapError=0
+---
+Case=DisplayBAR14_E0000000
+Physical=0xE0000000
+Tuple=B00:D02:F0 Bar=1
+MapSuccess=True
+MapError=0
+MapBytesReturned=8
+MappedUserVA=0x1A046E00000
+VirtualQuerySuccess=True
+ProtectRaw=0x404
+ProtectWritable=True
+DwordBefore=0xFF94D5F0
+DwordMutatedTarget=0xFF94D4F0
+DwordAfterMutation=0xFF94D4F0
+DwordAfterRestore=0xFF94D5F0
+CaseWriteAttempted=True
+CaseWriteObserved=True
+CaseRestoreObserved=True
+CleanupUnmapSuccess=True
+CleanupUnmapError=0
+---
+Case=DisplayBAR18_E8400000
+Physical=0xE8400000
+Tuple=B00:D02:F0 Bar=2
+MapSuccess=True
+MapError=0
+MapBytesReturned=8
+MappedUserVA=0x1A046D00000
+VirtualQuerySuccess=True
+ProtectRaw=0x204
+ProtectWritable=True
+DwordBefore=0x00000000
+DwordMutatedTarget=0x00000100
+DwordAfterMutation=0x00000100
+DwordAfterRestore=0x00000000
+CaseWriteAttempted=True
+CaseWriteObserved=True
+CaseRestoreObserved=True
+CleanupUnmapSuccess=True
+CleanupUnmapError=0
+---
+Summary.CasesWithObservedWrite=2
+Summary.ArbitraryRAMInjectionProven=False
+Conclusion=Observed writes here are scoped to mapped windows only and do not prove arbitrary RAM injection.
