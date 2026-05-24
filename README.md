@@ -1,5 +1,5 @@
 # RTCore64.sys Security Audit
-
+(Привет всем, надеюсь вы это увидите:)
 This repository contains a defensive security audit of `RTCore64.sys`, the kernel driver historically associated with MSI Afterburner / RTSS tooling.
 
 The work focuses on whether a newer observed build still exposes unsafe Ring 0 primitives similar in class to historical vulnerable-driver issues. The repository intentionally does **not** include the driver binary, crash dumps, weaponized exploit code, or destructive reproduction steps.
