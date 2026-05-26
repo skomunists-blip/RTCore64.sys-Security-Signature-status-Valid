@@ -1,4 +1,4 @@
-# RTCore64.sys Security Audit
+# RTCore64.sys Actual driver Security Audit 2026
 (Привет всем, надеюсь вы это увидите:)
 This repository contains a defensive security audit of `RTCore64.sys`, the kernel driver historically associated with MSI Afterburner / RTSS tooling.
 
